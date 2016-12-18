@@ -4,7 +4,8 @@ import VueResource from 'vue-resource'
 import Vuex from 'vuex'
 import VueHead from 'vue-head'
 import App from './App'
-import './assets/materialize/sass/materialize.scss'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.css'
 import '../node_modules/font-awesome/css/font-awesome.css'
 import routes from './routes'
 import storeParams from './vuex/store'
@@ -13,6 +14,7 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.use(Vuex)
 Vue.use(VueHead)
+Vue.use(VueMaterial)
 
 const router = new VueRouter({
     routes
