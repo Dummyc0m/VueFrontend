@@ -1,5 +1,5 @@
 <template>
-    <md-card style="width: 100%">
+    <md-card style="width: 100%" class="md-whiteframe-15dp">
         <md-card-header>
             <div class="md-title">{{course.name}}</div>
             <div class="md-subhead">{{course.instructor}}</div>
