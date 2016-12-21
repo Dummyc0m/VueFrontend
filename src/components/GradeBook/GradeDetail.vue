@@ -1,8 +1,8 @@
 <template>
     <md-card style="width: 100%">
         <md-card-header>
-            <div class="md-title">Course Name</div>
-            <div class="md-subhead">Instructor Name</div>
+            <div class="md-title">{{course.name}}</div>
+            <div class="md-subhead">{{course.instructor}}</div>
         </md-card-header>
 
         <md-card-content>
@@ -17,7 +17,7 @@
                     </md-table-row>
                 </md-table-header>
                 <md-table-body>
-                    <GradebookItem date="2016-12-11" point="2" possiblePoint="3" name="Test"></GradebookItem>
+                    <GradebookItem v-for="grade in grades" :date="grade.date" :point="grade.points" :possiblePoint="grade.total" :name="grade.name"></GradebookItem>
                 </md-table-body>
             </md-table>
         </md-card-content>
@@ -29,6 +29,7 @@
         name: 'GradeDetail',
         components: {
             GradebookItem
-        }
+        },
+        props: ['course', 'grades']
     }
 </script>
