@@ -1,11 +1,13 @@
 <template>
-    <md-layout style="max-width: 1024px; margin: auto;">
-        <GradeDetail :grades="magicTestData.grades" :course="magicTestData.course"></GradeDetail>
-    </md-layout>
+    <div class="phone-viewport">
+        <md-list>
+            <SectionListItem title="测试Test"></SectionListItem>
+        </md-list>
+    </div>
 </template>
 
 <script>
-    import GradeDetail from './GradeBook/GradeDetail'
+    import SectionListItem from './Course/SectionListItem'
     export default {
         name: 'TestPage',
         data () {
@@ -33,7 +35,7 @@
             }
         },
         components: {
-            GradeDetail
+            SectionListItem
         }
     }
 </script>
