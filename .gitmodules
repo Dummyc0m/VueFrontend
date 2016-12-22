@@ -1,0 +1,3 @@
+[submodule "src/material"]
+	path = src/material
+	url = git@github.com:GuardianClassroom/vue-material.git

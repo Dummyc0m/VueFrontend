@@ -16,6 +16,13 @@ Vue.use(Vuex)
 Vue.use(VueHead)
 Vue.use(VueMaterial)
 
+Vue.material.registerTheme('default', {
+    primary: 'blue',
+    accent: 'blue',
+    warn: 'red',
+    background: 'grey'
+})
+
 const router = new VueRouter({
     routes
 })
