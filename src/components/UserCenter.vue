@@ -10,12 +10,12 @@
             </md-layout>
             <md-layout md-flex-xsmall="80" md-flex-small="80" md-flex-medium="80" md-flex-large="80"
                        md-flex-xlarge="80">
-                <h2 class="md-display-1">Frank Lacrose Dell</h2>
+                <h2 class="md-display-1">Frank Lacrosé Dell</h2>
             </md-layout>
         </md-layout>
         <md-layout md-gutter>
-            <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="33" md-flex-large="25"
-                       md-flex-xlarge="25">
+            <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="33" md-flex-large="33"
+                       md-flex-xlarge="33">
                 <md-card class="md-whiteframe-7dp">
                     <md-card-media>
                         <img src="http://static.daibingsong.com/dbs/images/lock.png" alt="People">
@@ -51,8 +51,8 @@
                     </md-card-actions>
                 </md-card>
             </md-layout>
-            <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="33" md-flex-large="25"
-                       md-flex-xlarge="25">
+            <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="33" md-flex-large="33"
+                       md-flex-xlarge="33">
                 <md-card class="md-whiteframe-7dp">
                     <md-card-media>
                         <img src="http://static.daibingsong.com/dbs/images/billing.png" alt="People">
@@ -88,8 +88,8 @@
                     </md-card-actions>
                 </md-card>
             </md-layout>
-            <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="33" md-flex-large="25"
-                       md-flex-xlarge="25">
+            <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="33" md-flex-large="33"
+                       md-flex-xlarge="33">
                 <md-card class="md-whiteframe-7dp">
                     <md-card-media>
                         <img src="http://static.daibingsong.com/dbs/images/user.png" alt="People">
