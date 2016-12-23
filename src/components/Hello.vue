@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
     <div style="height: 20px;"></div>
     <CourseSection></CourseSection>
     </div>
