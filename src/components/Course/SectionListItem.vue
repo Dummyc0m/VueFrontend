@@ -1,7 +1,7 @@
 <template>
     <md-list-item>
         <router-link :to="toUrl">
-            <md-icon :icon="icon_class" :class="[active ? 'md-primary' : 'non-active']"></md-icon>
+            <md-icon :icon="icon_class" :class="[active ? 'md-color-primary' : 'non-active']"></md-icon>
             <span class="text">{{title}}</span>
         </router-link>
         <md-divider class="md-inset"></md-divider>

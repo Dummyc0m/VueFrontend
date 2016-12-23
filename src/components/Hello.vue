@@ -1,7 +1,10 @@
 <template>
     <div class="phone-viewport">
         <md-list>
-            <SectionListItem title="测试Test"></SectionListItem>
+            <SectionListItem title="测试Test0"></SectionListItem>
+            <SectionListItem title="测试Test1" active="true"></SectionListItem>
+            <SectionListItem title="测试Test2" icon="fa-stop-circle"></SectionListItem>
+            <SectionListItem title="测试Test3" active="true" icon="fa-stop-circle"></SectionListItem>
         </md-list>
     </div>
 </template>
