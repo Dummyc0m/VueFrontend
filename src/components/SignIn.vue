@@ -1,5 +1,5 @@
 <template>
-        <div style="max-width: 400px; margin: auto; padding-top: 100px;">
+        <div style="max-width: 400px; margin: auto; padding-top: 10vh;">
             <md-card class="md-whiteframe-10dp" style="padding: 10px 10px 10px 10px; margin: 20px 20px 20px 20px;" :class="loginWindowShakeAnimation">
                 <form v-on:submit.prevent="handleSignInSubmit">
                     <md-card-header>

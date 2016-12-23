@@ -7,21 +7,26 @@ import * as types from '../mutation-types'
 
 const state = {
     name: '',
-    username: ''
+    email: '',
+    id: -1
 }
 
 const mutations = {
     [types.USERINFO_NAME_CHANGE] (state, {name}) {
-        this.nane = name
+        state.nane = name
     },
-    [types.USERINFO_USERNAME_CHANGE] (state, {username}) {
-        this.username = username
+    [types.USERINFO_EMAIL_CHANGE] (state, {email}) {
+        state.email = email
+    },
+    [types.USERINFO_ID_CHANGE] (state, {id}) {
+        state.id = id
     }
 }
 
 const actions = {
-    updateUserInfo: ({dispatch, commit}) => {
-
+    updateUserInfo: ({dispatch, commit}, params) => {
+        commit(types.USERINFO_ID_CHANGE, {id: params.id})
+        commit(types.USERINFO_EMAIL_CHANGE, {email: params.email})
     }
 }
 

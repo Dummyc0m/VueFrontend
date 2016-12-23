@@ -33,7 +33,7 @@ export class AuthAPI {
         return new Promise((resolve, reject) => {
             Vue.http.post('auth/verify', new FormData()).then((response) => {
                 response.json().then((json) => {
-                    resolve(json.username)
+                    resolve(json)
                 }, (failed) => {
                     reject(failed)
                 })

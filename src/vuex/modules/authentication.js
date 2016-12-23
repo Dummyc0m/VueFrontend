@@ -23,6 +23,8 @@ const mutations = {
     },
     [types.AUTHENTICATION_ERROR] (state, {error}) {
         state.error = error
+    },
+    [types.AUTHENTICATION_VERIFICATION_SUCCESS] () {
     }
 }
 
@@ -42,7 +44,7 @@ const actions = {
     verifyToken: ({commit, dispatch}) => {
         api.auth.verify().then((success) => {
             commit(types.AUTHENTICATION_VERIFICATION_SUCCESS)
-            dispatch('updateUserInfo')
+            dispatch('updateUserInfo', success)
         }, (response) => {
             commit(types.AUTHENTICATION_FAILURE)
         })

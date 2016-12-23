@@ -3,22 +3,22 @@
         <header>
             <md-toolbar>
                 <router-link tag="md-button" class="md-icon-button" :to="{name: 'index'}">
-                    <md-icon class="fa fa-send fa-2x"></md-icon>
+                    <md-icon class="fa fa-graduation-cap fa-2x"></md-icon>
                 </router-link>
 
-                <h2 class="md-title"><router-link :to="{name: 'index'}" class="" style="color: inherit; text-decoration: none;">Guardian Classroom</router-link></h2>
+                <h2 class="md-title"><router-link :to="{name: 'index'}" class="" style="color: inherit; text-decoration: none;">Classroom</router-link></h2>
 
                 <span style="flex: 1;"></span>
 
-                <router-link tag="md-button" :to="{ path: '/sign-in'}">登录</router-link>
+                <router-link v-if="!authenticated" tag="md-button" class="menu-button" :to="{ path: '/sign-in'}">登录</router-link>
+                <router-link v-if="!authenticated" tag="md-button" class="menu-button" :to="{ path: '/sign-up'}">注册</router-link>
 
-                <md-menu>
-                    <md-button md-menu-trigger>2</md-button>
+                <md-menu v-if="authenticated">
+                    <md-button md-menu-trigger style="text-transform: none;">{{userEmail}}</md-button>
 
                     <md-menu-content>
-                        <md-menu-item>My Item 1</md-menu-item>
-                        <md-menu-item>My Item 2</md-menu-item>
-                        <md-menu-item>My Item 3</md-menu-item>
+                        <md-menu-item @click="routePush('user_center')">个人中心</md-menu-item>
+                        <md-menu-item @click="signOut">登出</md-menu-item>
                     </md-menu-content>
                 </md-menu>
             </md-toolbar>
@@ -45,9 +45,20 @@
         components: {
 
         },
+        computed: {
+            authenticated () {
+                return this.$store.state.authentication.authenticated
+            },
+            userEmail () {
+                return this.$store.state.userinfo.email
+            }
+        },
         methods: {
-            redirect (name) {
-                this.$router.push({name: name})
+            routePush (name) {
+                this.$router.push({'name': name})
+            },
+            signOut () {
+                this.$store.commit(types.AUTHENTICATION_FAILURE)
             }
         },
         created () {
@@ -73,12 +84,11 @@
             this.$router.beforeEach((to, from, next) => {
                 const toDepth = to.path.split('/').length
                 const fromDepth = from.path.split('/').length
-                if (from.path === '/sign-in') {
-                    self.transitionName = 'slide-right'
+                if (from.name === 'sign-in') {
+                    self.transitionName = 'slide-left'
                 } else {
                     self.transitionName = toDepth < fromDepth ? 'slider-ight' : to.path.length < 2 ? 'slide-right' : 'slide-left'
                 }
-                self.backEnabled = !(to.path.length < 2 || to.path === '/sign-in')
                 next()
             })
 
@@ -113,5 +123,9 @@
 
     .child-transition {
         transition: all .4s ease;
+    }
+
+    .menu-button {
+        min-width: 0 !important;
     }
 </style>
