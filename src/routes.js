@@ -10,9 +10,9 @@ export default [
         component: require('components/SignIn')
     },
     {
-        path: '/reg',
-        name: 'register',
-        component: require('components/Register')
+        path: '/sign-up',
+        name: 'sign-up',
+        component: require('components/SignUp')
     },
     {
         path: '/forgot_password',
