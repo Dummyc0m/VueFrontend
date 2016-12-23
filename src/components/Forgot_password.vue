@@ -31,6 +31,9 @@
             openDialog (ref) {
                 this.$refs[ref].open()
             },
+            closeDialog (ref) {
+                this.$refs[ref].close()
+            },
             findPassword () {
                 this.openDialog('success_dialog')
             }

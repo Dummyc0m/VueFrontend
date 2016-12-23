@@ -25,6 +25,11 @@ export default [
         component: require('components/Email_verify')
     },
     {
+        path: '/i',
+        name: 'user_center',
+        component: require('components/UserCenter')
+    },
+    {
         path: '/*',
         redirect: '/'
     }
