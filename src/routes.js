@@ -5,9 +5,9 @@ export default [
         component: require('components/Hello')
     },
     {
-        path: '/login',
-        name: 'login',
-        component: require('components/Login')
+        path: '/sign-in',
+        name: 'sign-in',
+        component: require('components/SignIn')
     },
     {
         path: '/reg',

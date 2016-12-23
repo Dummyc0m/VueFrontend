@@ -26,20 +26,21 @@
             // Transition
             const self = this
             // Authentication block
-            if (!self.$store.state.authentication.authenticated && this.$router.currentRoute.path !== '/sign-in') {
-                this.$router.push('sign-in')
-            }
-            this.$router.beforeEach((to, from, next) => {
-                if (to.path !== '/sign-in' && to.path !== '/') {
-                    if (self.$store.state.authentication.authenticated) {
-                        next()
-                    } else {
-                        next('/sign-in')
-                    }
-                } else {
-                    next()
-                }
-            })
+            // TODO
+//            if (!self.$store.state.authentication.authenticated && this.$router.currentRoute.path !== '/sign-in') {
+//                this.$router.push('sign-in')
+//            }
+//            this.$router.beforeEach((to, from, next) => {
+//                if (to.path !== '/sign-in' && to.path !== '/') {
+//                    if (self.$store.state.authentication.authenticated) {
+//                        next()
+//                    } else {
+//                        next('/sign-in')
+//                    }
+//                } else {
+//                    next()
+//                }
+//            })
             // Animation
             this.$router.beforeEach((to, from, next) => {
                 const toDepth = to.path.split('/').length
