@@ -9,6 +9,7 @@
 </template>
 <script>
     export default {
+        name: 'CourseSectionListItem',
         props: {
             'icon': {
                 type: String,

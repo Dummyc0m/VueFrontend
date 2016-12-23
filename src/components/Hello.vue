@@ -1,16 +1,12 @@
 <template>
-    <div class="phone-viewport">
-        <md-list>
-            <SectionListItem title="测试Test0"></SectionListItem>
-            <SectionListItem title="测试Test1" active="true"></SectionListItem>
-            <SectionListItem title="测试Test2" icon="fa-stop-circle"></SectionListItem>
-            <SectionListItem title="测试Test3" active="true" icon="fa-stop-circle"></SectionListItem>
-        </md-list>
+    <div>
+    <div style="height: 20px;"></div>
+    <CourseSection></CourseSection>
     </div>
 </template>
 
 <script>
-    import SectionListItem from './Course/SectionListItem'
+    import CourseSection from './Course/Section/CourseSection'
     export default {
         name: 'TestPage',
         data () {
@@ -38,7 +34,7 @@
             }
         },
         components: {
-            SectionListItem
+            CourseSection
         }
     }
 </script>
