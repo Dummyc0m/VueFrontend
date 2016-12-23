@@ -29,6 +29,16 @@ export class AuthAPI {
         })
     }
 
+    signOut () {
+        return new Promise((resolve, reject) => {
+            Vue.http.get('auth/signOut').then((d) => {
+                resolve()
+            }, (d) => {
+                resolve()
+            })
+        })
+    }
+
     verify () {
         return new Promise((resolve, reject) => {
             Vue.http.post('auth/verify', new FormData()).then((response) => {

@@ -50,8 +50,10 @@ const actions = {
         })
     },
     signOut: ({commit}) => {
-        delete Vue.http.headers.common['Authorization']
-        commit(types.AUTHENTICATION_FAILURE)
+        api.auth.signOut().then(() => {
+            delete Vue.http.headers.common['Authorization']
+            commit(types.AUTHENTICATION_FAILURE)
+        })
     },
     setError ({commit}, payload) {
         commit(types.AUTHENTICATION_ERROR, payload)

@@ -58,7 +58,7 @@
                 this.$router.push({'name': name})
             },
             signOut () {
-                this.$store.commit(types.AUTHENTICATION_FAILURE)
+                this.$store.dispatch('signOut')
             }
         },
         created () {
