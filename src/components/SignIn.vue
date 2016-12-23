@@ -1,6 +1,5 @@
 <template>
-    <div style="height: 100%;">
-        <div style="max-width: 400px; margin: 100px auto auto auto;">
+        <div style="max-width: 400px; margin: auto; padding-top: 100px;">
             <md-card class="md-whiteframe-10dp" style="padding: 10px 10px 10px 10px; margin: 20px 20px 20px 20px;" :class="loginWindowShakeAnimation">
                 <form v-on:submit.prevent="handleSignInSubmit">
                     <md-card-header>
@@ -26,7 +25,6 @@
                 </form>
             </md-card>
         </div>
-    </div>
 
 </template>
 
@@ -72,6 +70,8 @@
 
 
 <style scoped>
+
+
     .shake-animate {
         animation: shake 0.8s;
     }
