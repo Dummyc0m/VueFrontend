@@ -20,7 +20,7 @@
                 </md-card-content>
 
                 <md-card-actions>
-                    <md-button class="md-raised md-primary">Login</md-button>
+                    <md-button class="md-raised md-primary">Sign In</md-button>
                 </md-card-actions>
             </md-card>
         </div>

@@ -14,15 +14,15 @@
                     </md-input-container>
                     <md-input-container>
                         <label>Full Name</label>
-                        <md-input></md-input>
+                        <md-input maxlength="20"></md-input>
                     </md-input-container>
                     <md-input-container>
                         <label>Password</label>
-                        <md-input type="password"></md-input>
+                        <md-input type="password" maxlength="128"></md-input>
                     </md-input-container>
                     <md-input-container>
                         <label>Confirm your password</label>
-                        <md-input type="password"></md-input>
+                        <md-input type="password" maxlength="128"></md-input>
                     </md-input-container>
                 </md-card-content>
 
