@@ -1,40 +1,21 @@
 <template>
     <div class="container">
-    <div style="height: 20px;"></div>
-    <CourseSection></CourseSection>
+        <input type="text" v-model="content">
+        <QRCode :val="content"></QRCode>
     </div>
 </template>
 
 <script>
-    import CourseSection from './Course/Section/CourseSection'
+    import QRCode from './QRCode.vue'
     export default {
         name: 'TestPage',
         data () {
             return {
-                magicTestData: {
-                    course: {
-                        name: 'Test Course',
-                        instructor: 'Bob'
-                    },
-                    grades: [
-                        {
-                            name: 'TestItem1',
-                            points: 10,
-                            total: 27,
-                            date: '2016-12-25'
-                        },
-                        {
-                            name: 'TestItem2',
-                            points: 50,
-                            total: 57,
-                            date: '2016-12-26'
-                        }
-                    ]
-                }
+                content: 'Test'
             }
         },
         components: {
-            CourseSection
+            QRCode
         }
     }
 </script>
