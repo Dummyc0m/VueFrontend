@@ -14,43 +14,9 @@
             </md-layout>
         </md-layout>
         <md-layout md-gutter>
-            <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="33" md-flex-large="33"
-                       md-flex-xlarge="33">
-                <md-card class="md-whiteframe-7dp">
-                    <md-card-media>
-                        <img src="http://static.daibingsong.com/dbs/images/lock.png" alt="People">
-                    </md-card-media>
+            <UserCenterCard icon="fa-credit-card-alt"></UserCenterCard>
+            <UserCenterCard icon="fa-user-circle"></UserCenterCard>
 
-                    <md-card-header>
-                        <div class="md-title">Security</div>
-                        <div class="md-subhead">Password, multi-factor authentication (MFA) control.</div>
-                    </md-card-header>
-
-
-                    <md-card-content>
-                        <md-table v-once>
-                            <md-table-body>
-                                <md-table-row>
-                                    <md-table-cell>Last login</md-table-cell>
-                                    <md-table-cell md-numeric>2016-12-23 14:00:00</md-table-cell>
-                                </md-table-row>
-                                <md-table-row>
-                                    <md-table-cell>Last password change</md-table-cell>
-                                    <md-table-cell md-numeric>2016-12-22 14:00:00</md-table-cell>
-                                </md-table-row>
-                                <md-table-row>
-                                    <md-table-cell>MFA</md-table-cell>
-                                    <md-table-cell md-numeric>OFF</md-table-cell>
-                                </md-table-row>
-                            </md-table-body>
-                        </md-table>
-                    </md-card-content>
-                    <md-card-actions>
-                        <md-button @click="changePassword()">Change Password</md-button>
-                        <md-button>Setup MFA</md-button>
-                    </md-card-actions>
-                </md-card>
-            </md-layout>
             <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="33" md-flex-large="33"
                        md-flex-xlarge="33">
                 <md-card class="md-whiteframe-7dp">
@@ -173,7 +139,12 @@
 </template>
 
 <script>
+    import UserCenterCard from './UserCenterCard'
     export default {
+        name: 'UserCenter',
+        components: {
+            UserCenterCard
+        },
         data: () => ({
             alert: {
                 change_password_dialog_content: '<md-input-container> <label>password</label> <md-input v-model="password"></md-input> </md-input-container>'
@@ -197,4 +168,6 @@
     //    func
 </script>
 
+<style scoped>
 
+</style>

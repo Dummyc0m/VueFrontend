@@ -27,7 +27,7 @@ export default [
     {
         path: '/i',
         name: 'user_center',
-        component: require('components/UserCenter')
+        component: require('components/UserCenter/UserCenter')
     },
     {
         path: '/*',
