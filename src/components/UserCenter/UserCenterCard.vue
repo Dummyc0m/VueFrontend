@@ -11,8 +11,7 @@
                 <div class="md-subhead">{{subTitle}}</div>
             </md-card-header>
 
-
-            <md-card-content>
+            <md-card-content class="uccard-content">
                 <md-table v-once>
                     <md-table-body>
                         <md-table-row v-for="c in content">
@@ -83,13 +82,18 @@
 
     }
 
+    .uccard-content {
+        flex-direction: column;
+        flex: 1;
+    }
+
     .uccard-header-icon {
         margin-top: 7%;
         display: block;
     }
 
     .uccard {
-        margin: 20px 0;
+        margin: 20px 10px;
         flex:1;
     }
 </style>

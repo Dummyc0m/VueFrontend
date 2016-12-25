@@ -14,6 +14,7 @@
             </md-layout>
         </md-layout>
         <md-layout md-gutter>
+            <UserCenterCard :icon="accountCard.icon" :title="accountCard.title" :subTitle="accountCard.subTitle"></UserCenterCard>
             <UserCenterCard icon="fa-credit-card-alt"></UserCenterCard>
             <UserCenterCard icon="fa-user-circle"></UserCenterCard>
 
@@ -95,9 +96,15 @@
         <md-dialog md-open-from="#custom" md-close-to="#custom" ref="change_password_dialog">
             <md-dialog-title>Change password</md-dialog-title>
             <md-dialog-content>
-                <md-input-container> <label>Old password</label> <md-input v-model="oldPassword" type="password"></md-input> </md-input-container>
-                <md-input-container> <label>New password</label> <md-input v-model="newPassword" type="password"></md-input> </md-input-container>
-                <md-input-container> <label>Confirm password</label> <md-input v-model="confirmPassword" type="password"></md-input> </md-input-container>
+                <md-input-container><label>Old password</label>
+                    <md-input v-model="oldPassword" type="password"></md-input>
+                </md-input-container>
+                <md-input-container><label>New password</label>
+                    <md-input v-model="newPassword" type="password"></md-input>
+                </md-input-container>
+                <md-input-container><label>Confirm password</label>
+                    <md-input v-model="confirmPassword" type="password"></md-input>
+                </md-input-container>
             </md-dialog-content>
             <md-dialog-actions>
                 <md-button class="md-primary" @click="closeDialog('change_password_dialog')">Cancel</md-button>
@@ -107,7 +114,9 @@
         <md-dialog md-open-from="#custom" md-close-to="#custom" ref="recharge_dialog">
             <md-dialog-title>Recharge</md-dialog-title>
             <md-dialog-content>
-                <md-input-container> <label>Amount</label> <md-input v-model="rechargeAmount"></md-input> </md-input-container>
+                <md-input-container><label>Amount</label>
+                    <md-input v-model="rechargeAmount"></md-input>
+                </md-input-container>
             </md-dialog-content>
             <md-dialog-actions>
                 <md-button class="md-primary" @click="closeDialog('recharge_dialog')">Cancel</md-button>
@@ -126,9 +135,15 @@
         <md-dialog md-open-from="#custom" md-close-to="#custom" ref="edit_profile_dialog">
             <md-dialog-title>Edit Profile</md-dialog-title>
             <md-dialog-content>
-                <md-input-container> <label>Full name</label> <md-input v-model="full_name"></md-input> </md-input-container>
-                <md-input-container> <label>Email</label> <md-input v-model="email"></md-input> </md-input-container>
-                <md-input-container> <label>Phone</label> <md-input v-model="phone"></md-input> </md-input-container>
+                <md-input-container><label>Full name</label>
+                    <md-input v-model="full_name"></md-input>
+                </md-input-container>
+                <md-input-container><label>Email</label>
+                    <md-input v-model="email"></md-input>
+                </md-input-container>
+                <md-input-container><label>Phone</label>
+                    <md-input v-model="phone"></md-input>
+                </md-input-container>
             </md-dialog-content>
             <md-dialog-actions>
                 <md-button class="md-primary" @click="closeDialog('edit_profile_dialog')">Cancel</md-button>
@@ -145,14 +160,21 @@
         components: {
             UserCenterCard
         },
-        data: () => ({
-            alert: {
-                change_password_dialog_content: '<md-input-container> <label>password</label> <md-input v-model="password"></md-input> </md-input-container>'
-            },
-            full_name: 'Frank Dell',
-            email: 'id@daibingsong.com',
-            phone: '+8617197655556'
-        }),
+        data () {
+            return {
+                accountCard: {
+                    title: 'Security',
+                    subTitle: 'Testtttttt',
+                    icon: 'fa-lock'
+                },
+                alert: {
+                    change_password_dialog_content: '<md-input-container> <label>password</label> <md-input v-model="password"></md-input> </md-input-container>'
+                },
+                full_name: 'Frank Dell',
+                email: 'id@daibingsong.com',
+                phone: '+8617197655556'
+            }
+        },
         methods: {
             openDialog (ref) {
                 this.$refs[ref].open()
