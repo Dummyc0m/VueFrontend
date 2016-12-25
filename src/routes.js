@@ -7,27 +7,27 @@ export default [
     {
         path: '/sign-in',
         name: 'sign-in',
-        component: require('components/SignIn')
+        component: require('pages/UserAuthentication/SignIn')
     },
     {
         path: '/sign-up',
         name: 'sign-up',
-        component: require('components/SignUp')
+        component: require('pages/UserAuthentication/SignUp')
     },
     {
         path: '/forgot_password',
         name: 'forgot_password',
-        component: require('components/Forgot_password')
+        component: require('pages/UserAuthentication/Forgot_password')
     },
     {
         path: '/email_verify',
         name: 'email_verify',
-        component: require('components/Email_verify')
+        component: require('pages/UserAuthentication/Email_verify')
     },
     {
         path: '/i',
         name: 'user_center',
-        component: require('components/UserCenter/UserCenter')
+        component: require('pages/UserCenter/UserCenter')
     },
     {
         path: '/*',

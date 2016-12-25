@@ -154,7 +154,7 @@
 </template>
 
 <script>
-    import UserCenterCard from './UserCenterCard'
+    import UserCenterCard from 'components/UserCenter/UserCenterCard'
     export default {
         name: 'UserCenter',
         components: {
