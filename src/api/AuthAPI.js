@@ -29,6 +29,20 @@ export class AuthAPI {
         })
     }
 
+    register (email, realname, password) {
+        const formData = new FormData()
+        formData.append('email', email)
+        formData.append('password', md5(password))
+        formData.append('fullName', realname)
+        return new Promise((resolve, reject) => {
+            Vue.http.post('register', formData).then((response) => {
+                resolve(response)
+            }, (failed) => {
+                reject(failed)
+            })
+        })
+    }
+
     signOut () {
         return new Promise((resolve, reject) => {
             Vue.http.get('auth/signOut').then((d) => {

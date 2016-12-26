@@ -20,6 +20,8 @@
                     </md-card-content>
 
                     <md-card-actions>
+                        <router-link style="text-decoration: none" :to="{name: 'sign-up'}">没有账号？ 立即注册</router-link>
+                        <div style="flex: 1;"></div>
                         <md-button class="md-raised md-primary" type="submit">登录</md-button>
                     </md-card-actions>
                 </form>
