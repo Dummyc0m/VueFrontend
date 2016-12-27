@@ -5,7 +5,7 @@
                 <form v-on:submit.prevent="handleSignInSubmit">
                     <md-card-header>
                         <div class="md-title">登录</div>
-                        <div class="md-subhead">Sign in your account to access user area.</div>
+                        <div class="md-subhead">输入凭据来访问您的账户。</div>
                     </md-card-header>
 
                     <md-card-content>
