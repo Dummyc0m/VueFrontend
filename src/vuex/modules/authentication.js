@@ -28,6 +28,7 @@ const mutations = {
         state.error = error
     },
     [types.AUTHENTICATION_VERIFICATION_SUCCESS] () {
+        state.mfaAuthed = true
     },
     [types.AUTHENTICATION_REQUIRE_MFA] (state) {
         state.mfaAuthed = false
@@ -58,9 +59,12 @@ const actions = {
             callback(false)
         })
     },
-    verifyToken: ({commit, dispatch}) => {
+    verifyToken: ({state, commit, dispatch}) => {
         api.auth.verify().then((success) => {
             if (success.isMfaAuthed) {
+                if (!state.mfaAuthed) {
+                    commit(types.AUTHENTICATION_MFA_PASS)
+                }
                 commit(types.AUTHENTICATION_VERIFICATION_SUCCESS)
                 dispatch('updateUserInfo', success.userinfo)
             } else {
@@ -78,6 +82,21 @@ const actions = {
     },
     setError ({commit}, payload) {
         commit(types.AUTHENTICATION_ERROR, payload)
+    },
+    verifyMFA ({commit}, {code, callback}) {
+        api.auth.verifyMFA(code).then((resolve) => {
+            console.log(resolve)
+            if (resolve.mfaResult) {
+                commit(types.AUTHENTICATION_MFA_PASS)
+                callback(true)
+            } else {
+                commit(types.AUTHENTICATION_MFA_ERROR)
+                callback(false)
+            }
+        }, (reject) => {
+            commit(types.AUTHENTICATION_MFA_ERROR)
+            callback(false)
+        })
     }
 }
 

@@ -1,8 +1,9 @@
 <template>
     <div style="height: 100%;">
         <div style="max-width: 400px; margin: 100px auto auto auto;">
-            <md-card class="md-whiteframe-10dp" style="padding: 10px 10px 10px 10px; margin: 20px 20px 20px 20px;" :class="loginWindowShakeAnimation">
-                <form @submit.prevent="handleSignInSubmit">
+            <md-card class="md-whiteframe-10dp" style="padding: 10px 10px 10px 10px; margin: 20px 20px 20px 20px;"
+                     :class="{'shake-animate' : hasError}">
+                <form @submit.prevent="handleMFASubmit">
                     <md-card-header>
                         <div class="md-title">两步验证</div>
                         <div class="md-subhead">为确保您账户的安全，我们需要验证您的身份。</div>
@@ -35,9 +36,24 @@
             }
         },
         methods: {
-
+            handleMFASubmit () {
+                let self = this
+                this.hasError = false
+                this.$store.dispatch('verifyMFA', {
+                    code: this.token,
+                    callback (result) {
+                        if (!result) {
+                            self.hasError = true
+                            self.token = ''
+                        }
+                    }
+                })
+            }
         },
         created () {
+            if (this.$store.state.authentication.mfaAuthed) {
+                this.$router.replace({name: 'index'})
+            }
         }
     }
 </script>

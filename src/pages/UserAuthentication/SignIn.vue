@@ -1,32 +1,33 @@
 <template>
-        <div style="max-width: 400px; margin: auto; padding-top: 10vh;">
-            <md-card class="md-whiteframe-10dp" style="padding: 10px 10px 10px 10px; margin: 20px 20px 20px 20px;" :class="loginWindowShakeAnimation">
-                <form v-on:submit.prevent="handleSignInSubmit">
-                    <md-card-header>
-                        <div class="md-title">登录</div>
-                        <div class="md-subhead">输入凭据来访问您的账户。</div>
-                    </md-card-header>
+    <div style="max-width: 400px; margin: auto; padding-top: 10vh;">
+        <md-card class="md-whiteframe-10dp" style="padding: 10px 10px 10px 10px; margin: 20px 20px 20px 20px;"
+                 :class="loginWindowShakeAnimation">
+            <form v-on:submit.prevent="handleSignInSubmit">
+                <md-card-header>
+                    <div class="md-title">登录</div>
+                    <div class="md-subhead">输入凭据来访问您的账户。</div>
+                </md-card-header>
 
-                    <md-card-content>
-                        <md-input-container>
-                            <label>邮箱</label>
-                            <md-input type="text" v-model="email" required></md-input>
-                        </md-input-container>
+                <md-card-content>
+                    <md-input-container>
+                        <label>邮箱</label>
+                        <md-input type="text" v-model="email" required></md-input>
+                    </md-input-container>
 
-                        <md-input-container>
-                            <label>密码</label>
-                            <md-input type="password" v-model="password" required></md-input>
-                        </md-input-container>
-                    </md-card-content>
+                    <md-input-container>
+                        <label>密码</label>
+                        <md-input type="password" v-model="password" required></md-input>
+                    </md-input-container>
+                </md-card-content>
 
-                    <md-card-actions>
-                        <router-link style="text-decoration: none" :to="{name: 'sign-up'}">没有账号？ 立即注册</router-link>
-                        <div style="flex: 1;"></div>
-                        <md-button class="md-raised md-primary" type="submit">登录</md-button>
-                    </md-card-actions>
-                </form>
-            </md-card>
-        </div>
+                <md-card-actions>
+                    <router-link style="text-decoration: none" :to="{name: 'sign-up'}">没有账号？ 立即注册</router-link>
+                    <div style="flex: 1;"></div>
+                    <md-button class="md-raised md-primary" type="submit">登录</md-button>
+                </md-card-actions>
+            </form>
+        </md-card>
+    </div>
 
 </template>
 
@@ -52,7 +53,11 @@
                     password: this.password,
                     callback (result) {
                         if (result) {
-                            self.$router.replace('/')
+                            if (self.$store.state.authentication.authenticated && self.$store.state.authentication.mfaAuthed) {
+                                self.$router.replace({name: 'index'})
+                            } else {
+                                self.$router.replace({name: 'mfa'})
+                            }
                         } else {
                             self.password = ''
                             self.isLoginAvailable = true

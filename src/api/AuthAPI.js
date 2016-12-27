@@ -29,6 +29,22 @@ export class AuthAPI {
         })
     }
 
+    verifyMFA (code) {
+        const formData = new FormData()
+        formData.append('code', code)
+        return new Promise((resolve, reject) => {
+            Vue.http.post('auth/mfa', formData).then((valid) => {
+                valid.json().then((json) => {
+                    resolve(json)
+                }, (f) => {
+                    reject(f)
+                })
+            }, (failed) => {
+                reject(failed)
+            })
+        })
+    }
+
     register (email, realname, password) {
         const formData = new FormData()
         formData.append('email', email)

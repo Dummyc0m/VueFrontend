@@ -101,6 +101,11 @@
                     case types.AUTHENTICATION_REQUIRE_MFA:
                         self.$router.replace({name: 'mfa'})
                         break
+                    case types.AUTHENTICATION_MFA_PASS:
+                        if (self.$router.currentRoute.name === 'mfa') {
+                            self.$router.replace({name: 'index'})
+                        }
+                        break
                     case types.AUTHENTICATION_VERIFICATION_SUCCESS:
                         break
                 }
