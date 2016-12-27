@@ -19,7 +19,7 @@ export class AuthAPI {
         return new Promise((resolve, reject) => {
             Vue.http.post('auth', formData).then((response) => {
                 response.json().then((json) => {
-                    resolve(json.token)
+                    resolve({token: json.token, requireMFA: json.requireMFA})
                 }, (failed) => {
                     reject(failed)
                 })
