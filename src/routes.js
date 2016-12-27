@@ -12,7 +12,7 @@ export default [
     {
         path: '/mfa',
         name: 'mfa',
-        component: require('components/Mfa')
+        component: require('pages/UserAuthentication/MFA')
     },
     {
         path: '/sign-up',

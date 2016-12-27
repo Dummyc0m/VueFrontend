@@ -44,13 +44,13 @@ const actions = {
     authenticate: ({commit, dispatch}, {username, password, callback}) => {
         api.auth.authenticate(username, password).then((json) => {
             Vue.http.headers.common['Authorization'] = json.token
-            commit(types.AUTHENTICATION, {token: token})
+            commit(types.AUTHENTICATION, {token: json.token})
             if (!json.requireMFA) {
                 commit(types.AUTHENTICATION_MFA_PASS)
+                dispatch('verifyToken')
             } else {
                 commit(types.AUTHENTICATION_REQUIRE_MFA)
             }
-            dispatch('verifyToken')
             callback(true)
         }, (response) => {
             commit(types.AUTHENTICATION_ERROR, {error: true})

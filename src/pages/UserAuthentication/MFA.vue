@@ -2,14 +2,14 @@
     <div style="height: 100%;">
         <div style="max-width: 400px; margin: 100px auto auto auto;">
             <md-card class="md-whiteframe-10dp" style="padding: 10px 10px 10px 10px; margin: 20px 20px 20px 20px;" :class="loginWindowShakeAnimation">
-                <form v-on:submit.prevent="handleSignInSubmit">
+                <form @submit.prevent="handleSignInSubmit">
                     <md-card-header>
                         <div class="md-title">两步验证</div>
                         <div class="md-subhead">为确保您账户的安全，我们需要验证您的身份。</div>
                     </md-card-header>
 
                     <md-card-content>
-                        <md-input-container>
+                        <md-input-container :class="">
                             <label>验证码</label>
                             <md-input type="text" v-model="token" maxlength="6" required></md-input>
                         </md-input-container>
@@ -27,10 +27,11 @@
 
 <script>
     export default {
-        name: 'Mfa',
+        name: 'MFA',
         data () {
             return {
-
+                hasError: false,
+                token: ''
             }
         },
         methods: {
