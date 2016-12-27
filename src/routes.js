@@ -10,6 +10,11 @@ export default [
         component: require('pages/UserAuthentication/SignIn')
     },
     {
+        path: '/mfa',
+        name: 'mfa',
+        component: require('components/Mfa')
+    },
+    {
         path: '/sign-up',
         name: 'sign-up',
         component: require('pages/UserAuthentication/SignUp')
@@ -28,6 +33,11 @@ export default [
         path: '/i',
         name: 'user_center',
         component: require('pages/UserCenter/UserCenter')
+    },
+    {
+        path: '/video',
+        name: 'video',
+        component: require('components/Video')
     },
     {
         path: '/*',

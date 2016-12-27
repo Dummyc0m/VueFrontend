@@ -24,7 +24,7 @@
             },
             size: {
                 type: Number,
-                default: 128
+                default: 750
             },
             // 'L', 'M', 'Q', 'H'
             level: String,
