@@ -83,11 +83,11 @@ const actions = {
     setError ({commit}, payload) {
         commit(types.AUTHENTICATION_ERROR, payload)
     },
-    verifyMFA ({commit}, {code, callback}) {
+    verifyMFA ({commit, dispatch}, {code, callback}) {
         api.auth.verifyMFA(code).then((resolve) => {
-            console.log(resolve)
             if (resolve.mfaResult) {
                 commit(types.AUTHENTICATION_MFA_PASS)
+                dispatch('verifyToken')
                 callback(true)
             } else {
                 commit(types.AUTHENTICATION_MFA_ERROR)
