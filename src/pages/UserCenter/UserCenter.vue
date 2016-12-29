@@ -14,7 +14,7 @@
             </md-layout>
         </md-layout>
         <md-layout md-gutter>
-            <UserCenterCard :icon="accountCard.icon" :title="accountCard.title" :subTitle="accountCard.subTitle"></UserCenterCard>
+            <SecurityCard></SecurityCard>
             <UserCenterCard icon="fa-credit-card-alt"></UserCenterCard>
             <UserCenterCard icon="fa-user-circle"></UserCenterCard>
 
@@ -155,10 +155,11 @@
 
 <script>
     import UserCenterCard from 'components/UserCenter/UserCenterCard'
+    import SecurityCard from 'components/UserCenter/cards/SecurityCard'
     export default {
         name: 'UserCenter',
         components: {
-            UserCenterCard
+            UserCenterCard, SecurityCard
         },
         data () {
             return {

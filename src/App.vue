@@ -13,7 +13,7 @@
                 <router-link v-if="!authenticated" tag="md-button" class="menu-button" :to="{ path: '/sign-in'}">登录</router-link>
                 <router-link v-if="!authenticated" tag="md-button" class="menu-button" :to="{ path: '/sign-up'}">注册</router-link>
 
-                <md-menu v-if="authenticated">
+                <md-menu v-if="authenticated && mfaAuthed">
                     <md-button md-menu-trigger style="text-transform: none;">{{userEmail}}</md-button>
 
                     <md-menu-content>
@@ -21,6 +21,17 @@
                         <md-menu-item @click="signOut">登出</md-menu-item>
                     </md-menu-content>
                 </md-menu>
+
+                <md-menu v-if="authenticated && (!mfaAuthed)">
+                    <md-button md-menu-trigger style="text-transform: none;">完成两步验证</md-button>
+
+                    <md-menu-content>
+                        <md-menu-item @click="routePush('mfa')">完成两步验证</md-menu-item>
+                        <md-menu-item @click="signOut">登出</md-menu-item>
+                    </md-menu-content>
+
+                </md-menu>
+
             </md-toolbar>
         </header>
         <main>
@@ -28,12 +39,13 @@
                 <router-view class="child-transition main-view"></router-view>
             </transition>
         </main>
+        <LoadingSpinner v-if="showLoader"></LoadingSpinner>
     </div>
 </template>
 
 <script>
     import * as types from './vuex/mutation-types'
-
+    import LoadingSpinner from 'components/LoadingSpinner'
     export default {
         name: 'app',
         data () {
@@ -43,7 +55,7 @@
             }
         },
         components: {
-
+            LoadingSpinner
         },
         computed: {
             authenticated () {
@@ -51,6 +63,12 @@
             },
             userEmail () {
                 return this.$store.state.userinfo.email
+            },
+            mfaAuthed () {
+                return this.$store.state.authentication.mfaAuthed
+            },
+            showLoader () {
+                return this.$store.state.loader.display
             }
         },
         methods: {
