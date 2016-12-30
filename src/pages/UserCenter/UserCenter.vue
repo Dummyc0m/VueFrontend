@@ -10,7 +10,7 @@
             </md-layout>
             <md-layout md-flex-xsmall="80" md-flex-small="80" md-flex-medium="80" md-flex-large="80"
                        md-flex-xlarge="80">
-                <h2 class="md-display-1">Frank Lacrosé Dell</h2>
+                <h2 class="md-display-1">{{userName}}</h2>
             </md-layout>
         </md-layout>
         <md-layout md-gutter>
@@ -185,6 +185,11 @@
             },
             changePassword () {
                 this.openDialog('change_password_dialog')
+            }
+        },
+        computed: {
+            userName () {
+                return this.$store.state.userinfo.email
             }
         }
     }

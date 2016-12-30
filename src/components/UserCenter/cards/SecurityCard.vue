@@ -3,7 +3,7 @@
                md-flex-xlarge="33">
         <md-card class="md-whiteframe-7dp uccard">
             <md-card-media class="uccard-header">
-                <i class="uccard-header-icon fa fa-lock fa-5x" :class="icon"></i>
+                <i class="uccard-header-icon fa fa-lock fa-5x"></i>
             </md-card-media>
 
             <md-card-header>
@@ -16,7 +16,7 @@
                     <md-table-body>
                         <md-table-row>
                             <md-table-cell>最后登录时间</md-table-cell>
-                            <md-table-cell md-numeric>{{lastLoginDate}}</md-table-cell>
+                            <md-table-cell md-numeric>{{loginDate}}</md-table-cell>
                         </md-table-row>
                         <md-table-row>
                             <md-table-cell>最后登录IP</md-table-cell>
@@ -35,12 +35,12 @@
 </template>
 
 <script>
+//    const Moment = require('moment')
     export default {
         name: 'SecurityCard',
         data () {
             return {
-                lastLoginDate: 'Loading...',
-                lastLoginIp: 'Loading...',
+                lastLoginIp: '载入中...',
                 mfaEnabled: null
             }
         },
@@ -53,6 +53,12 @@
             }
         },
         computed: {
+            loginDate () {
+                return this.$store.state.userinfo.email
+            }
+        },
+        mounted () {
+            this.$store.dispatch('updateLoginHistory')
         }
     }
 </script>
@@ -79,6 +85,6 @@
 
     .uccard {
         margin: 20px 10px;
-        flex:1;
+        flex: 1;
     }
 </style>

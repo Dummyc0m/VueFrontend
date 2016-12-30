@@ -3,6 +3,8 @@
  */
 
 import {AuthAPI} from './AuthAPI'
+import {UserinfoAPI} from './UserinfoAPI'
 export default {
-    auth: new AuthAPI()
+    auth: new AuthAPI(),
+    userinfo: new UserinfoAPI()
 }
