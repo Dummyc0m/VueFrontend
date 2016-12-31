@@ -22,10 +22,10 @@
                             <md-table-cell>最后登录IP</md-table-cell>
                             <md-table-cell md-numeric>{{lastLoginIP}}</md-table-cell>
                         </md-table-row>
-                        <!--<md-table-row>-->
-                            <!--<md-table-cell>最后登录地点</md-table-cell>-->
-                            <!--<md-table-cell md-numeric>{{lastLoginLocation}}</md-table-cell>-->
-                        <!--</md-table-row>-->
+                        <md-table-row>
+                            <md-table-cell>最后登录地点</md-table-cell>
+                            <md-table-cell md-numeric>{{lastLoginLocation}}</md-table-cell>
+                        </md-table-row>
                     </md-table-body>
                 </md-table>
             </md-card-content>
@@ -40,6 +40,7 @@
 
 <script>
     import Moment from 'moment'
+    import api from 'api/classroomAPI'
     export default {
         name: 'SecurityCard',
         props: {
@@ -50,8 +51,7 @@
         },
         data () {
             return {
-                lastLoginLocation: 'Loading...',
-                mfaEnabled: null
+                lastLoginLocation: 'Loading...'
             }
         },
         methods: {
@@ -63,16 +63,26 @@
             }
         },
         computed: {
+            mfaEnabled () {
+                return this.$store.state.userinfo.mfaEnabled
+            },
             lastLoginIP () {
-                return (this.loginHistory !== null && this.loginHistory.length > 0) ? this.loginHistory[0].ip : '载入中...'
+                if (this.loginHistory !== null && this.loginHistory.length > 0) {
+                    api.userinfo.fetchLocation(this.loginHistory[0].ip).then((resolve) => {
+                        console.log(resolve)
+                        this.lastLoginLocation = resolve.location
+                    })
+                    return this.loginHistory[0].ip
+                }
+                return '载入中...'
             },
             lastLoginDate () {
                 return (this.loginHistory !== null && this.loginHistory.length > 0) ? new Moment(this.loginHistory[0].time * 1000).calendar() : '载入中...'
             }
         },
         mounted () {
-            this.$store.dispatch('updateLoginHistory')
             Moment.locale('zh-cn')
+            this.$store.dispatch('updateLoginHistory')
         }
     }
 </script>
