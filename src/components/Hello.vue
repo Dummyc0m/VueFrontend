@@ -1,7 +1,11 @@
 <template>
     <div class="container">
-        <input type="text" v-model="content">
-        <QRCode :val="content"></QRCode>
+        lable <input type="text" v-model="lable"><br />
+        username <input type="text" v-model="username"><br />
+        secret <input type="text" v-model="secret"><br />
+        <p>{{str}}</p>
+        <QRCode v-bind:val="str"></QRCode>
+
     </div>
 </template>
 
@@ -11,7 +15,14 @@
         name: 'TestPage',
         data () {
             return {
-                content: 'Test'
+                lable: '',
+                username: '',
+                secret: ''
+            }
+        },
+        computed: {
+            str: function () {
+                return 'otpauth://totp/' + this.username + '?secret=' + this.secret + '&issuer=' + this.lable
             }
         },
         components: {
