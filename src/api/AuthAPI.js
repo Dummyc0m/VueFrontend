@@ -29,6 +29,37 @@ export class AuthAPI {
         })
     }
 
+    requestMFA () {
+        return new Promise((resolve, reject) => {
+            Vue.http.get('auth/mfa/getToken').then((response) => {
+                response.json().then((json) => {
+                    resolve(json)
+                }, (failed) => {
+                    reject(failed)
+                })
+            }, (response) => {
+                reject(response)
+            })
+        })
+    }
+
+    enableMFA (secret, code) {
+        const formData = new FormData()
+        formData.append('secret', secret)
+        formData.append('code', code)
+        return new Promise((resolve, reject) => {
+            Vue.http.post('auth/mfa/setup', formData).then((response) => {
+                response.json().then((json) => {
+                    resolve(json.succeed)
+                }, (failed) => {
+                    reject(failed)
+                })
+            }, (response) => {
+                reject(response)
+            })
+        })
+    }
+
     verifyMFA (code) {
         const formData = new FormData()
         formData.append('code', code)
