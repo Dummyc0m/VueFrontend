@@ -10,11 +10,11 @@
             </md-layout>
             <md-layout md-flex-xsmall="80" md-flex-small="80" md-flex-medium="80" md-flex-large="80"
                        md-flex-xlarge="80">
-                <h2 class="md-display-1">{{userName}}</h2>
+                <h2 class="md-display-1"></h2>
             </md-layout>
         </md-layout>
         <md-layout md-gutter>
-            <SecurityCard></SecurityCard>
+            <SecurityCard :loginHistory="loginHistory"></SecurityCard>
             <UserCenterCard icon="fa-credit-card-alt"></UserCenterCard>
             <UserCenterCard icon="fa-user-circle"></UserCenterCard>
 
@@ -163,11 +163,6 @@
         },
         data () {
             return {
-                accountCard: {
-                    title: 'Security',
-                    subTitle: 'Testtttttt',
-                    icon: 'fa-lock'
-                },
                 alert: {
                     change_password_dialog_content: '<md-input-container> <label>password</label> <md-input v-model="password"></md-input> </md-input-container>'
                 },
@@ -188,12 +183,11 @@
             }
         },
         computed: {
-            userName () {
-                return this.$store.state.userinfo.email
+            loginHistory () {
+                return this.$store.state.userinfo.loginHistory
             }
         }
     }
-    //    func
 </script>
 
 <style scoped>

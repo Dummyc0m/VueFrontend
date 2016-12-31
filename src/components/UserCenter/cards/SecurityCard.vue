@@ -12,16 +12,20 @@
             </md-card-header>
 
             <md-card-content class="uccard-content">
-                <md-table v-once>
+                <md-table>
                     <md-table-body>
                         <md-table-row>
                             <md-table-cell>最后登录时间</md-table-cell>
-                            <md-table-cell md-numeric>{{loginDate}}</md-table-cell>
+                            <md-table-cell md-numeric>{{lastLoginDate}}</md-table-cell>
                         </md-table-row>
                         <md-table-row>
                             <md-table-cell>最后登录IP</md-table-cell>
-                            <md-table-cell md-numeric>{{lastLoginIp}}</md-table-cell>
+                            <md-table-cell md-numeric>{{lastLoginIP}}</md-table-cell>
                         </md-table-row>
+                        <!--<md-table-row>-->
+                            <!--<md-table-cell>最后登录地点</md-table-cell>-->
+                            <!--<md-table-cell md-numeric>{{lastLoginLocation}}</md-table-cell>-->
+                        <!--</md-table-row>-->
                     </md-table-body>
                 </md-table>
             </md-card-content>
@@ -35,12 +39,18 @@
 </template>
 
 <script>
-//    const Moment = require('moment')
+    import Moment from 'moment'
     export default {
         name: 'SecurityCard',
+        props: {
+            loginHistory: {
+                type: Array,
+                required: true
+            }
+        },
         data () {
             return {
-                lastLoginIp: '载入中...',
+                lastLoginLocation: 'Loading...',
                 mfaEnabled: null
             }
         },
@@ -53,12 +63,16 @@
             }
         },
         computed: {
-            loginDate () {
-                return this.$store.state.userinfo.email
+            lastLoginIP () {
+                return (this.loginHistory !== null && this.loginHistory.length > 0) ? this.loginHistory[0].ip : '载入中...'
+            },
+            lastLoginDate () {
+                return (this.loginHistory !== null && this.loginHistory.length > 0) ? new Moment(this.loginHistory[0].time * 1000).calendar() : '载入中...'
             }
         },
         mounted () {
             this.$store.dispatch('updateLoginHistory')
+            Moment.locale('zh-cn')
         }
     }
 </script>
