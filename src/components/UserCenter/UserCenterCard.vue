@@ -1,5 +1,5 @@
 <template>
-    <md-layout md-flex-xsmall="100" md-flex-small="50" md-flex-medium="33" md-flex-large="33"
+    <md-layout md-flex-xsmall="100" md-flex-small="100" md-flex-medium="50" md-flex-large="33"
                md-flex-xlarge="33">
         <md-card class="md-whiteframe-7dp uccard">
             <md-card-media class="uccard-header">

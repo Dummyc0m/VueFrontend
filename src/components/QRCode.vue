@@ -7,7 +7,7 @@
             :width="size"
             ref="qr"
         ></canvas>
-        <p>{{val}}</p>
+        <p :class="{'none-display': !textVisible }">{{val}}</p>
     </div>
 </template>
 
@@ -18,13 +18,17 @@
     }
     export default {
         props: {
+            textVisible: {
+                type: Boolean,
+                default: false
+            },
             val: {
                 type: String,
                 required: true
             },
             size: {
                 type: Number,
-                default: 750
+                default: 150
             },
             // 'L', 'M', 'Q', 'H'
             level: String,
@@ -78,5 +82,8 @@
 <style scoped>
     .text-center {
         text-align: center !important;
+    }
+    .none-display {
+        display: none;
     }
 </style>
