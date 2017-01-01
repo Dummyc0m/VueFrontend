@@ -59,14 +59,16 @@ const actions = {
             callback(false)
         })
     },
-    verifyToken: ({state, commit, dispatch}) => {
+    verifyToken: ({state, commit, dispatch}, test = {simple: false}) => {
         api.auth.verify().then((success) => {
             if (success.isMfaAuthed) {
-                if (!state.mfaAuthed) {
-                    commit(types.AUTHENTICATION_MFA_PASS)
+                if (test.simple !== null && test.simple !== true) {
+                    if (!state.mfaAuthed) {
+                        commit(types.AUTHENTICATION_MFA_PASS)
+                    }
+                    commit(types.AUTHENTICATION_VERIFICATION_SUCCESS)
+                    dispatch('updateUserInfo', success.userinfo)
                 }
-                commit(types.AUTHENTICATION_VERIFICATION_SUCCESS)
-                dispatch('updateUserInfo', success.userinfo)
             } else {
                 commit(types.AUTHENTICATION_REQUIRE_MFA)
             }

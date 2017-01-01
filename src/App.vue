@@ -106,6 +106,9 @@
                     self.transitionName = 'slide-left'
                 } else {
                     self.transitionName = toDepth < fromDepth ? 'slider-ight' : to.path.length < 2 ? 'slide-right' : 'slide-left'
+                    if (self.$store.state.authentication.authenticated) {
+                        self.$store.dispatch('verifyToken', {simple: true})
+                    }
                 }
                 next()
             })

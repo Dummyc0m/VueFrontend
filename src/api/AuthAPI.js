@@ -60,6 +60,22 @@ export class AuthAPI {
         })
     }
 
+    disableMFA (code) {
+        const formData = new FormData()
+        formData.append('code', code)
+        return new Promise((resolve, reject) => {
+            Vue.http.post('auth/mfa/disable', formData).then((response) => {
+                response.json().then((json) => {
+                    resolve(json.succeed)
+                }, (failed) => {
+                    reject(failed)
+                })
+            }, (response) => {
+                reject(response)
+            })
+        })
+    }
+
     verifyMFA (code) {
         const formData = new FormData()
         formData.append('code', code)
@@ -83,7 +99,11 @@ export class AuthAPI {
         formData.append('fullName', realname)
         return new Promise((resolve, reject) => {
             Vue.http.post('register', formData).then((response) => {
-                resolve(response)
+                response.json().then((json) => {
+                    resolve(json)
+                }, (failed) => {
+                    reject(failed)
+                })
             }, (failed) => {
                 reject(failed)
             })

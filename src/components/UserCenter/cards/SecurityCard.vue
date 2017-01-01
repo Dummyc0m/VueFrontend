@@ -12,7 +12,7 @@
             </md-card-header>
 
             <md-card-content class="uccard-content" style="transition: all 0.4s ease;">
-                <transition name="fade" mode="out-in">
+                <transition name="fade" mode="out-in" @before-leave="hasError = false">
                     <md-table v-if="currentPage === 0">
                         <md-table-body>
                             <md-table-row>
@@ -29,29 +29,35 @@
                             </md-table-row>
                             <md-table-row>
                                 <md-table-cell>两步认证</md-table-cell>
-                                <md-table-cell md-numeric>已{{mfaEnabled ? '启':'禁'}}用</md-table-cell>
+                                <md-table-cell md-numeric>{{mfaEnabled ? '已':'未'}}启用</md-table-cell>
                             </md-table-row>
                         </md-table-body>
                     </md-table>
                     <div v-if="currentPage === 1">
                         <h4>请在Google Authenticator APP上扫描二维码</h4>
                         <QRCode :val="mfaURL" :size="200"></QRCode>
-                        <md-input-container>
-                            <label>生成器代码</label>
-                            <md-input type="tel" v-model="userCode" maxlength="6" minlength="6"></md-input>
-                        </md-input-container>
+                        <form @submit.prevent="verifyCode()">
+                            <md-input-container :class="{'md-input-invalid' : hasError}">
+                                <label>生成器代码</label>
+                                <md-input type="tel" v-model="userCode" maxlength="6" minlength="6"></md-input>
+                                <span class="md-error">生成器代码有误</span>
+                            </md-input-container>
+                        </form>
                     </div>
                     <div v-if="currentPage === 2">
                         <h4>请输入两步验证码</h4>
-                        <md-input-container :class="{'md-input-invalid'">
-                            <label>生成器代码</label>
-                            <md-input type="tel" v-model="userCode" maxlength="6" minlength="6"></md-input>
-                        </md-input-container>
+                        <form @submit.prevent="submitDisableMFA()">
+                            <md-input-container :class="{'md-input-invalid' : hasError}">
+                                <label>生成器代码</label>
+                                <md-input type="tel" v-model="userCode" maxlength="6" minlength="6" required></md-input>
+                                <span class="md-error">生成器代码有误</span>
+                            </md-input-container>
+                        </form>
                     </div>
                 </transition>
             </md-card-content>
 
-            <md-card-actions>
+            <md-card-actions style="margin-bottom: 10px;">
                 <md-button v-if="currentPage === 0 && (mfaEnabled !== null) && (!mfaEnabled)" @click="setupMFA()">
                     设置两步验证
                 </md-button>
@@ -96,13 +102,26 @@
                 })
             },
             submitDisableMFA () {
-
+                this.hasError = false
+                api.auth.disableMFA(this.userCode).then((success) => {
+                    if (success) {
+                        this.currentPage = 0
+                        this.$store.dispatch('updateMFAStatus')
+                    } else {
+                        this.shakeWindow()
+                    }
+                    this.userCode = ''
+                }, () => {
+                    this.shakeWindow()
+                    this.userCode = ''
+                })
             },
             verifyCode () {
                 api.auth.enableMFA(this.mfaCode, this.userCode).then((success) => {
                     if (success) {
                         this.currentPage = 0
                         this.mfaCode = ''
+                        this.$store.dispatch('updateMFAStatus')
                     } else {
                         this.shakeWindow()
                     }
@@ -114,10 +133,10 @@
             },
             shakeWindow () {
                 const self = this
-                this.hasError = true
+                this.hasError = false
                 window.setTimeout(() => {
-                    self.hasError = false
-                }, 800)
+                    self.hasError = true
+                }, 1)
             }
         },
         computed: {
@@ -153,7 +172,7 @@
 <style scoped>
     .uccard-header {
         position: relative;
-        height: 140px;
+        height: 150px;
         background-color: #5983fd;
         color: #FFF;
         text-align: center !important;

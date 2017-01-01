@@ -75,7 +75,15 @@
             submitForm () {
                 if (this.isFormValid) {
                     console.log(api)
-                    api.auth.register(this.email, this.fullName, this.password)
+                    api.auth.register(this.email, this.fullName, this.password).then((resolve) => {
+                        if (resolve.registerSuccess) {
+                            this.$router.push({name: 'sign-in'})
+                        } else {
+                            alert('注册失败 - 邮箱被占用')
+                        }
+                    }, () => {
+                        alert('注册失败 - 系统错误')
+                    })
                 }
             }
         }
