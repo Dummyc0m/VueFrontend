@@ -37,7 +37,7 @@ const router = new VueRouter({
 
 export const store = new Vuex.Store(storeParams)
 
-Vue.http.options.root = 'http://hn2.guardiantech.com.cn:3333/v1'
+Vue.http.options.root = 'http://localhost:3333/v1'
 
 /* eslint-disable no-new */
 new Vue({
