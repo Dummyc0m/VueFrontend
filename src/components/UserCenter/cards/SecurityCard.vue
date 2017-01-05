@@ -34,7 +34,7 @@
                         </md-table-body>
                     </md-table>
                     <div v-if="currentPage === 1">
-                        <h4>请在Google Authenticator APP上扫描二维码</h4>
+                        <h4>请在Google Authenticator App上扫描二维码</h4>
                         <QRCode :val="mfaURL" :size="200"></QRCode>
                         <form @submit.prevent="verifyCode()">
                             <md-input-container :class="{'md-input-invalid' : hasError}">

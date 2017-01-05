@@ -7,7 +7,6 @@ import App from './App'
 import VueMaterial from 'vue-material-gc'
 import VideoPlayer from 'vue-video-player'
 import 'vue-material-gc/dist/vue-material.css'
-// import 'material-design-icons/iconfont/material-icons.css'
 import 'font-awesome/css/font-awesome.css'
 import routes from './routes'
 import storeParams from './vuex/store'
@@ -37,7 +36,7 @@ const router = new VueRouter({
 
 export const store = new Vuex.Store(storeParams)
 
-Vue.http.options.root = 'http://localhost:3333/v1'
+Vue.http.options.root = 'http://hn2.guardiantech.com.cn:3333/v1'
 
 /* eslint-disable no-new */
 new Vue({

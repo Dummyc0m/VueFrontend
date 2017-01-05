@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1 class="md-display-2">User center</h1>
+        <h1 class="md-display-2">用户中心</h1>
         <md-layout md-gutter>
             <md-layout md-flex-xsmall="20" md-flex-small="20" md-flex-medium="20" md-flex-large="20"
                        md-flex-xlarge="20">
