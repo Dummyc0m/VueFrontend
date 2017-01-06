@@ -29,7 +29,7 @@
                             </md-table-row>
                         </md-table-body>
                     </md-table>
-                    <Coupon :showButton="false" v-if="currentPage === 3"></Coupon>
+                    <Coupon :showButton="false" :topSpace="true" v-if="currentPage === 3"></Coupon>
                 </transition>
             </md-card-content>
 

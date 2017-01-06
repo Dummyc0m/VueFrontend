@@ -1,5 +1,5 @@
 <template>
-    <form class="couponWindow">
+    <form class="couponWindow" :class="{'marginTop':topSpace}">
         <md-input-container>
             <label>兑换码</label>
             <md-input></md-input>
@@ -17,6 +17,10 @@
             showButton: {
                 type: Boolean,
                 default: true
+            },
+            topSpace: {
+                type: Boolean,
+                default: true
             }
         }
     }
@@ -24,8 +28,11 @@
 
 <style scoped>
     .couponWindow {
-        margin: 100px auto auto auto;
+        margin: 0 auto auto auto;
         max-width: 240px;
+    }
+    .marginTop {
+        margin: 7% auto auto auto !important;
     }
     .align-right {
         float: right;

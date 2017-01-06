@@ -18,7 +18,7 @@
 
                     <md-menu-content>
                         <md-menu-item @click="routePush('user_center')">个人中心</md-menu-item>
-                        <md-menu-item @click="routePush('user_class')">课程</md-menu-item>
+                        <md-menu-item @click="routePush('user_courses')">我的课程</md-menu-item>
                         <md-menu-item @click="signOut">登出</md-menu-item>
                     </md-menu-content>
                 </md-menu>
