@@ -17,7 +17,7 @@
                         <md-table-body>
                             <md-table-row>
                                 <md-table-cell>姓名</md-table-cell>
-                                <md-table-cell md-numeric></md-table-cell>
+                                <md-table-cell md-numeric>{{name}}</md-table-cell>
                             </md-table-row>
                             <md-table-row>
                                 <md-table-cell>邮箱</md-table-cell>
@@ -25,7 +25,7 @@
                             </md-table-row>
                             <md-table-row>
                                 <md-table-cell>电话</md-table-cell>
-                                <md-table-cell md-numeric>+86 171-9765-5556</md-table-cell>
+                                <md-table-cell md-numeric>{{phone}}</md-table-cell>
                             </md-table-row>
                         </md-table-body>
                     </md-table>
@@ -67,6 +67,18 @@
         computed: {
             userEmail () {
                 return this.$store.state.userinfo.email
+            },
+            name () {
+                if (this.$store.state.userinfo.name !== null) {
+                    return this.$store.state.userinfo.name
+                }
+                return '载入中...'
+            },
+            phone () {
+                if (this.$store.state.userinfo.phone !== null) {
+                    return this.$store.state.userinfo.phone.countrycode + ' ' + this.$store.state.userinfo.phone.phone
+                }
+                return '载入中...'
             }
         },
         mounted () {
