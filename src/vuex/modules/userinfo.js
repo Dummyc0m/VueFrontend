@@ -6,9 +6,9 @@ import * as types from '../mutation-types'
 import api from '../../api/classroomAPI'
 
 const state = {
-    phone: '',
-    name: '',
-    email: '',
+    phone: null,
+    name: null,
+    email: null,
     id: -1,
     mfaEnabled: null,
     loginHistory: []
@@ -19,7 +19,7 @@ const mutations = {
         state.phone = phone
     },
     [types.USERINFO_NAME_CHANGE] (state, {name}) {
-        state.nane = name
+        state.name = name
     },
     [types.USERINFO_EMAIL_CHANGE] (state, {email}) {
         state.email = email
@@ -46,6 +46,14 @@ const actions = {
         commit(types.USERINFO_EMAIL_CHANGE, {email: params.email})
         dispatch('updateMFAStatus')
         dispatch('updateUserinfoDetail')
+    },
+    updateUserinfoDetail: ({dispatch, commit}, params) => {
+        api.userinfo.fetchName().then((data) => {
+            commit(types.USERINFO_NAME_CHANGE, {name: data.name})
+        })
+        api.userinfo.fetchPhone().then((data) => {
+            commit(types.USERINFO_PHONE_CHANGE, {phone: data})
+        })
     },
     updateLoginHistory: ({commit}) => {
         api.userinfo.fetchLastLogin().then((resolve) => {

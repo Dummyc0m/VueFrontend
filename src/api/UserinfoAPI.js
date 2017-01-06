@@ -19,6 +19,34 @@ export class UserinfoAPI {
         })
     }
 
+    fetchName () {
+        return new Promise((resolve, reject) => {
+            Vue.http.get('profile/name').then((response) => {
+                response.json().then((json) => {
+                    resolve(json)
+                }, (failed) => {
+                    reject(failed)
+                })
+            }, (response) => {
+                reject(response)
+            })
+        })
+    }
+
+    fetchPhone () {
+        return new Promise((resolve, reject) => {
+            Vue.http.get('profile/phone').then((response) => {
+                response.json().then((json) => {
+                    resolve(json)
+                }, (failed) => {
+                    reject(failed)
+                })
+            }, (response) => {
+                reject(response)
+            })
+        })
+    }
+
     fetchLocation (ip) {
         return new Promise((resolve, reject) => {
             Vue.http.get('usercenter/ipGeolocation/' + ip).then((response) => {

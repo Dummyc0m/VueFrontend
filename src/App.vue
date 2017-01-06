@@ -14,7 +14,7 @@
                 <router-link v-if="!authenticated" tag="md-button" class="menu-button" :to="{ path: '/sign-up'}">注册</router-link>
 
                 <md-menu v-if="authenticated && mfaAuthed">
-                    <md-button md-menu-trigger style="text-transform: none;">{{userEmail}}</md-button>
+                    <md-button md-menu-trigger style="text-transform: none;">{{name}}</md-button>
 
                     <md-menu-content>
                         <md-menu-item @click="routePush('user_center')">个人中心</md-menu-item>
@@ -63,6 +63,12 @@
             },
             userEmail () {
                 return this.$store.state.userinfo.email
+            },
+            name () {
+                if (this.$store.state.userinfo.name !== null) {
+                    return this.$store.state.userinfo.name
+                }
+                return '载入中...'
             },
             mfaAuthed () {
                 return this.$store.state.authentication.mfaAuthed
