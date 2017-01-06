@@ -29,16 +29,21 @@
                             </md-table-row>
                         </md-table-body>
                     </md-table>
+                    <Coupon :showButton="false" v-if="currentPage === 3"></Coupon>
                 </transition>
             </md-card-content>
 
             <md-card-actions style="margin-bottom: 10px;">
-                <md-button v-if="currentPage === 0" @click="setupMFA()">
+                <md-button v-if="currentPage === 0" @click="">
                     充值
                 </md-button>
+                <md-button v-if="currentPage === 0" @click="currentPage = 3">
+                    兑换
+                </md-button>
                 <md-button v-if="currentPage !== 0" @click="currentPage = 0">返回</md-button>
-                <md-button v-if="currentPage === 1" @click="verifyCode()">提交</md-button>
-                <md-button v-if="currentPage === 2" @click="submitDisableMFA()">提交</md-button>
+                <md-button v-if="currentPage === 1" @click="">提交</md-button>
+                <md-button v-if="currentPage === 2" @click="">提交</md-button>
+                <md-button v-if="currentPage === 3" @click="useCoupon()">提交</md-button>
             </md-card-actions>
         </md-card>
     </md-layout>
@@ -46,6 +51,7 @@
 
 <script>
     import Moment from 'moment'
+    import Coupon from '../../Coupon.vue'
     export default {
         name: 'BillingCard',
         data () {
@@ -64,6 +70,9 @@
                 window.setTimeout(() => {
                     self.hasError = true
                 }, 1)
+            },
+            useCoupon () {
+
             }
         },
         computed: {
@@ -72,6 +81,7 @@
             Moment.locale('zh-cn')
         },
         components: {
+            Coupon
         }
     }
 </script>

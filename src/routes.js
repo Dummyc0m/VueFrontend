@@ -40,6 +40,11 @@ export default [
         component: require('components/Video')
     },
     {
+        path: '/my_class',
+        name: 'user_class',
+        component: require('pages/UserClass/UserClassList')
+    },
+    {
         path: '/*',
         redirect: '/'
     }
