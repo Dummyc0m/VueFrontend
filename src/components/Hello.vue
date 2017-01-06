@@ -1,12 +1,11 @@
 <template>
     <div class="container">
-        <input type="text" v-model="content">
-        <QRCode :val="content"></QRCode>
+        <CourseCard></CourseCard>
     </div>
 </template>
 
 <script>
-    import QRCode from './QRCode.vue'
+    import CourseCard from 'components/Course/CourseCard'
     export default {
         name: 'TestPage',
         data () {
@@ -15,7 +14,7 @@
             }
         },
         components: {
-            QRCode
+            CourseCard
         }
     }
 </script>
