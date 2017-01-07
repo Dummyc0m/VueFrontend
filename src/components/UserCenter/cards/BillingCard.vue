@@ -29,7 +29,13 @@
                             </md-table-row>
                         </md-table-body>
                     </md-table>
-                    <Coupon :showButton="false" :topSpace="true" v-if="currentPage === 3"></Coupon>
+                    <form class="couponWindow" v-if="currentPage === 3">
+                        <md-input-container>
+                            <label>兑换码</label>
+                            <md-input v-model="code"></md-input>
+                            <span class="md-error">兑换码输入有误</span>
+                        </md-input-container>
+                    </form>
                 </transition>
             </md-card-content>
 
@@ -51,7 +57,6 @@
 
 <script>
     import Moment from 'moment'
-    import Coupon from '../../Coupon.vue'
     export default {
         name: 'BillingCard',
         data () {
@@ -72,7 +77,7 @@
                 }, 1)
             },
             useCoupon () {
-
+                this.$store.dispatch('useCoupon', this.code)
             }
         },
         computed: {
@@ -81,7 +86,6 @@
             Moment.locale('zh-cn')
         },
         components: {
-            Coupon
         }
     }
 </script>
@@ -93,7 +97,6 @@
         background-color: #5983fd;
         color: #FFF;
         text-align: center !important;
-
     }
 
     .uccard-content {
@@ -109,6 +112,11 @@
     .uccard {
         margin: 20px 10px;
         flex: 1;
+    }
+
+    .couponWindow {
+        margin: 7% auto auto auto;
+        width: 240px;
     }
 
     .fade-enter-active, .fade-leave-active {

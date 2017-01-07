@@ -3,7 +3,7 @@
                md-flex-xlarge="25">
         <md-card class="uccard md-whiteframe-7dp">
             <md-card-media md-ratio="16:9" class="uccard-header">
-                <i class="uccard-header-icon fa fa-question fa-5x" v-if="pic === ''" style="text-align: center !important;"></i>
+                <i class="uccard-header-icon fa fa-5x" :class="{[pic]:!picIsUrl}" v-if="!picIsUrl"></i>
                 <img :src="pic" alt="图片加载失败" v-else>
             </md-card-media>
 
@@ -16,19 +16,25 @@
             </md-card-content>
 
             <md-card-actions>
-                <md-button class="md-primary" @click="goToUrl()">进入</md-button>
+                <md-button class="md-primary" @click="goToUrl()">{{action}}</md-button>
             </md-card-actions>
         </md-card>
     </md-layout>
 </template>
 
 <script>
+    import isUrl from 'is-url'
     export default{
         name: 'CourseCard',
+        data () {
+            return {
+                picIsUrl: true
+            }
+        },
         props: {
             pic: {
                 type: String,
-                default: ''
+                default: 'fa-question'
             },
             title: {
                 type: String,
@@ -41,12 +47,21 @@
             url: {
                 type: String,
                 default: ''
+            },
+            action: {
+                type: String,
+                default: '进入'
             }
         },
         methods: {
             goToUrl () {
-                this.$router.push({'name': this.url})
+                if (this.url) {
+                    this.$router.push({'name': this.url})
+                }
             }
+        },
+        created () {
+            this.picIsUrl = isUrl(this.pic)
         }
     }
 </script>
@@ -58,7 +73,6 @@
         background-color: #5983fd;
         color: #FFF;
         text-align: center !important;
-
     }
 
     .uccard-content {
@@ -67,7 +81,7 @@
     }
 
     .uccard-header-icon {
-        margin-top: -50%;
+        margin-top: -46%;
         display: block;
     }
 
