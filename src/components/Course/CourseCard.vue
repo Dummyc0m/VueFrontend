@@ -8,7 +8,7 @@
             </md-card-media>
 
             <md-card-header>
-                <h3 class="md-title" @click="goToUrl()">{{title}}</h3>
+                <h3 class="md-title" @click="routerPush()">{{title}}</h3>
             </md-card-header>
 
             <md-card-content class="uccard-content">
@@ -16,7 +16,8 @@
             </md-card-content>
 
             <md-card-actions>
-                <md-button class="md-primary" @click="goToUrl()">{{action}}</md-button>
+                <md-button class="md-primary" @click="routerPush()">{{action}}</md-button>
+                <md-button class="md-primary" @click="routerPush('edit_course', {id : id})" v-if="showEdit">编辑</md-button>
             </md-card-actions>
         </md-card>
     </md-layout>
@@ -32,6 +33,10 @@
             }
         },
         props: {
+            id: {
+                type: String,
+                required: true
+            },
             pic: {
                 type: String,
                 default: 'fa-question'
@@ -51,13 +56,15 @@
             action: {
                 type: String,
                 default: '进入'
+            },
+            showEdit: {
+                type: Boolean,
+                default: false
             }
         },
         methods: {
-            goToUrl () {
-                if (this.url) {
-                    this.$router.push({'name': this.url})
-                }
+            routerPush (url, params = {}) {
+                this.$router.push({name: url, params: params})
             }
         },
         created () {
@@ -86,6 +93,7 @@
     }
 
     .uccard {
+        height: 383px;
         margin: 20px 10px;
         flex: 1;
     }
