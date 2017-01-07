@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import VueHead from 'vue-head'
 import App from './App'
 import VueMaterial from 'vue-material-gc'
+import VueI18n from 'vue-i18n'
 import VideoPlayer from 'vue-video-player'
 import 'vue-material-gc/dist/vue-material.css'
 import 'font-awesome/css/font-awesome.css'
@@ -16,6 +17,7 @@ Vue.use(VueResource)
 Vue.use(Vuex)
 Vue.use(VueHead)
 Vue.use(VueMaterial)
+Vue.use(VueI18n)
 Vue.use(VideoPlayer)
 
 Vue.material.registerTheme('default', {
@@ -37,6 +39,15 @@ const router = new VueRouter({
 export const store = new Vuex.Store(storeParams)
 
 Vue.http.options.root = 'http://hn2.guardiantech.com.cn:3333/v1'
+
+import locales from './locale'
+
+Vue.config.lang = 'zh_cn'
+console.log(locales)
+
+Object.keys(locales).forEach(function (lang) {
+    Vue.locale(lang, locales[lang])
+})
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <p>{{$t('message.hello')}}</p>
         <CourseCard></CourseCard>
     </div>
 </template>
