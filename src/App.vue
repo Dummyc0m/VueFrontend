@@ -18,6 +18,7 @@
 
                     <md-menu-content>
                         <md-menu-item @click="routePush('user_center')">个人中心</md-menu-item>
+                        <md-menu-item v-if="adminPanelAccess" @click="routePush('admin')">后台管理(Admin)</md-menu-item>
                         <md-menu-item @click="signOut">登出</md-menu-item>
                     </md-menu-content>
                 </md-menu>
@@ -75,9 +76,17 @@
             },
             showLoader () {
                 return this.$store.state.loader.display
+            },
+            adminPanelAccess () {
+                console.log('computing')
+                return this.hasPermission('adminPanel')
             }
         },
         methods: {
+            hasPermission (permission) {
+                console.log(this.$store.state.authentication.permissions.indexOf(permission))
+                return (this.$store.state.authentication.permissions.indexOf(permission) > -1)
+            },
             routePush (name) {
                 this.$router.push({'name': name})
             },
