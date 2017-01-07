@@ -8,6 +8,7 @@ import VueMaterial from 'vue-material-gc'
 import VideoPlayer from 'vue-video-player'
 import 'vue-material-gc/dist/vue-material.css'
 import 'font-awesome/css/font-awesome.css'
+import 'katex/dist/katex.css'
 import routes from './routes'
 import storeParams from './vuex/store'
 

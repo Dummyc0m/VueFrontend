@@ -1,11 +1,11 @@
 <template>
     <div class="container">
-        <CourseCard></CourseCard>
+        <KaTex>c = \pm\sqrt{a^2 + b^2}</KaTex>
     </div>
 </template>
 
 <script>
-    import CourseCard from 'components/Course/CourseCard'
+    import KaTex from 'components/KaTex'
     export default {
         name: 'TestPage',
         data () {
@@ -14,7 +14,7 @@
             }
         },
         components: {
-            CourseCard
+            KaTex
         }
     }
 </script>
