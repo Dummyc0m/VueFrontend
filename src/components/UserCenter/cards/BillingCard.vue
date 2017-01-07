@@ -65,7 +65,8 @@
                 currentPage: 0,
                 userCode: '',
                 mfaCode: '',
-                hasError: false
+                hasError: false,
+                code: ''
             }
         },
         methods: {
