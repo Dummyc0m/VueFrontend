@@ -1,11 +1,14 @@
 <template>
     <div class="container">
-        <KaTex>c = \pm\sqrt{a^2 + b^2}</KaTex>
+        <CourseInfo></CourseInfo>
+        <input v-model="content">
+        <QRCode :val="content"></QRCode>
     </div>
 </template>
 
 <script>
-    import KaTex from 'components/KaTex'
+    import CourseInfo from 'components/Course/CourseInfo'
+    import QRCode from 'components/QRCode'
     export default {
         name: 'TestPage',
         data () {
@@ -14,7 +17,7 @@
             }
         },
         components: {
-            KaTex
+            QRCode, CourseInfo
         }
     }
 </script>

@@ -7,15 +7,12 @@
             :width="size"
             ref="qr"
         ></canvas>
-        <p :class="{'none-display': !textVisible }">{{val}}</p>
+        <p v-if="textVisible">{{val}}</p>
     </div>
 </template>
 
 <script>
     import qr from 'qr.js'
-    const update = function () {
-        this.update()
-    }
     export default {
         props: {
             textVisible: {
@@ -41,8 +38,14 @@
                 default: '#000000'
             }
         },
-        beforeUpdate: update,
-        mounted: update,
+        watch: {
+            val (newVal) {
+                this.update()
+            }
+        },
+        mounted () {
+            this.update()
+        },
         methods: {
             getBackingStorePixelRatio (ctx) {
                 return (
