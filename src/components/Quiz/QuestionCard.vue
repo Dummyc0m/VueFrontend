@@ -1,27 +1,39 @@
 <template>
     <md-whiteframe md-elevation="2" class="question-card">
         <div>
-            <h2 class="question-id question-section">2</h2>
+            <h2 class="question-id question-section">{{ section }}</h2>
             <h2 class="question-id">.</h2>
-            <h2 class="question-id question-number">1</h2>
+            <h2 class="question-id question-number">{{ number }}</h2>
         </div>
         <div class="question-content">
-            <div v-html="q"></div>
+            <better-latex>{{ content }}</better-latex>
         </div>
+        <slot>
+            This question does not have a format
+        </slot>
     </md-whiteframe>
 </template>
 
 <script>
-    import LaTex from 'components/LaTex'
+    import BetterLatex from 'components/BetterLatex'
     export default {
         name: 'QuestionCard',
-        data () {
-            return {
-                q: '二三十年<LaTex>\\fraction{1}{2}</LaTex>'
-            }
-        },
         components: {
-            LaTex
+            BetterLatex
+        },
+        props: {
+            section: {
+                type: Number,
+                required: true
+            },
+            number: {
+                type: Number,
+                required: true
+            },
+            content: {
+                type: String,
+                required: true
+            }
         }
     }
 </script>
