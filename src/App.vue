@@ -80,13 +80,11 @@
                 return this.$store.state.loader.display
             },
             adminPanelAccess () {
-                console.log('computing')
                 return this.hasPermission('adminPanel')
             }
         },
         methods: {
             hasPermission (permission) {
-                console.log(this.$store.state.authentication.permissions.indexOf(permission))
                 return (this.$store.state.authentication.permissions.indexOf(permission) > -1)
             },
             routePush (name) {
