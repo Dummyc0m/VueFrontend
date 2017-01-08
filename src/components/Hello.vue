@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <QuestionCard></QuestionCard>
         <CourseCard :id="-1"></CourseCard>
         <TreeMenu></TreeMenu>
         <CourseSection :edit="true"></CourseSection>
@@ -7,6 +8,7 @@
 </template>
 
 <script>
+    import QuestionCard from 'components/Quiz/QuestionCard'
     import CourseCard from 'components/Course/CourseCard'
     import TreeMenu from 'components/TreeMenu/TreeMenu'
     import CourseSection from 'components/Course/Section/CourseSection'
@@ -20,7 +22,8 @@
         components: {
             CourseCard,
             TreeMenu,
-            CourseSection
+            CourseSection,
+            QuestionCard
         }
     }
 </script>
