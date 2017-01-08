@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <CourseInfo></CourseInfo>
+        <CourseInfo course-title="Creative Calculus" instructor="Dummyc0m"></CourseInfo>
         <input v-model="content">
         <QRCode :val="content"></QRCode>
     </div>

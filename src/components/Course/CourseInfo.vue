@@ -1,18 +1,40 @@
 <template>
     <md-whiteframe md-elevation="2" class="root-card">
+        <h1>{{courseTitle}}</h1>
         <div>
-            <img src="http://placehold.it/100x100" class="avatar">
+            <img :src="instructorAvatar" class="avatar">
             <div class="inline name-box">
-                <h1>Instructor Name</h1>
+                <h1>{{instructor}}</h1>
             </div>
         </div>
         <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eros nulla, consectetur et gravida eget, mattis eget leo. Pellentesque in neque eu massa bibendum dictum eget at risus. Phasellus auctor eleifend sapien, sit amet volutpat mauris vehicula sit amet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean euismod, mi sed mollis laoreet, lectus quam semper lorem, a ullamcorper lacus mauris in lacus. Integer consectetur ultrices erat, non faucibus dolor viverra vel. Integer sem lorem, venenatis vitae sagittis in, ultrices sollicitudin elit. Aliquam erat volutpat. Sed placerat sit amet leo quis suscipit. Nulla pretium euismod nunc, aliquet eleifend est euismod eget. Praesent fringilla lacus non nibh dignissim, ac sagittis augue scelerisque. Nullam nec mattis nulla, finibus lobortis felis.</p>
+            <p>{{description}}</p>
         </div>
     </md-whiteframe>
 </template>
 
 <script>
+    export default {
+        name: 'CourseInfo',
+        props: {
+            courseTitle: {
+                type: String,
+                required: true
+            },
+            instructor: {
+                type: String,
+                required: true
+            },
+            instructorAvatar: {
+                type: String,
+                default: 'http://placehold.it/100x100'
+            },
+            description: {
+                type: String,
+                default: 'Creative Calculus is a great course for you creativity'
+            }
+        }
+    }
 </script>
 
 <style scoped>
