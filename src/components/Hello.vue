@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <CourseCard :id="-1"></CourseCard>
+        <CourseCard id="-1"></CourseCard>
         <TreeMenu></TreeMenu>
         <CourseSection :edit="true"></CourseSection>
     </div>

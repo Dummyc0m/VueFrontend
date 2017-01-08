@@ -65,6 +65,11 @@ export default [
                 component: require('components/CreatorStudio/EditCourse')
             },
             {
+                name: 'my_video',
+                path: 'my_video',
+                component: require('components/CreatorStudio/MyVideo')
+            },
+            {
                 path: '/*',
                 redirect: 'data_center'
             }

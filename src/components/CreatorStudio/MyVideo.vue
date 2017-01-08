@@ -1,13 +1,12 @@
 <template>
     <md-layout md-gutter>
-        <CourseSection :edit="true"></CourseSection>
+
     </md-layout>
 </template>
 
 <script>
-    import CourseSection from '../Course/Section/CourseSection'
     export default {
-        name: 'EditCourse',
+        name: 'MyVideo',
         data () {
             return {
                 id: ''
@@ -17,10 +16,10 @@
 
         },
         components: {
-            CourseSection
+
         },
         created () {
-            this.id = this.$route.params.id
+
         }
     }
 </script>

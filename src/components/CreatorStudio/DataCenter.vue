@@ -14,6 +14,7 @@
                         <md-tab md-label="年"></md-tab>
                     </md-tabs>
 
+                    <lazy-render>
                     <md-table>
                         <md-table-body>
                             <md-table-row>
@@ -26,6 +27,7 @@
                             </md-table-row>
                         </md-table-body>
                     </md-table>
+                    </lazy-render>
                 </md-card-content>
             </md-card>
         </md-layout>
