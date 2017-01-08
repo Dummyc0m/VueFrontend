@@ -1,6 +1,5 @@
 <template>
     <div class="text-center">
-        <!-- todo: ':val' is set as workaround for update not being fired on props change.. -->
         <canvas
             :style="{height: size + 'px', width: size + 'px'}"
             :height="size"

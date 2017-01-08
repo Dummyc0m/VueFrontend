@@ -17,7 +17,6 @@
     "vue-head": "^2.0.10",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.1.1",
-    "vue-video-player": "^2.4.3",
     "vuex": "^2.1.1"
   },
   "devDependencies": {
@@ -43,6 +42,7 @@
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "flv.js": "^1.1.0",
     "function-bind": "^1.0.2",
     "html-webpack-plugin": "^2.8.1",
     "http-proxy-middleware": "^0.17.2",
