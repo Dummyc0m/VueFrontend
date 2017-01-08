@@ -5,6 +5,7 @@
 <script>
     import katex from 'katex'
     export default {
+        name: 'LaTex',
         computed: {
             katex () {
                 return katex.renderToString(this.$slots.default[0].text)
