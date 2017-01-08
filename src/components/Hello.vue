@@ -1,10 +1,15 @@
 <template>
     <div class="container">
+        <CourseCard :id="-1"></CourseCard>
+        <TreeMenu></TreeMenu>
+        <CourseSection :edit="true"></CourseSection>
     </div>
 </template>
 
 <script>
-    import VideoPlayer from 'components/VideoPlayer/VideoPlayer'
+    import CourseCard from 'components/Course/CourseCard'
+    import TreeMenu from 'components/TreeMenu/TreeMenu'
+    import CourseSection from 'components/Course/Section/CourseSection'
     export default {
         name: 'TestPage',
         data () {
@@ -13,7 +18,9 @@
             }
         },
         components: {
-            VideoPlayer
+            CourseCard,
+            TreeMenu,
+            CourseSection
         }
     }
 </script>

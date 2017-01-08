@@ -29,16 +29,27 @@
                             </md-table-row>
                         </md-table-body>
                     </md-table>
+                    <form class="couponWindow" v-if="currentPage === 3">
+                        <md-input-container>
+                            <label>兑换码</label>
+                            <md-input v-model="code"></md-input>
+                            <span class="md-error">兑换码输入有误</span>
+                        </md-input-container>
+                    </form>
                 </transition>
             </md-card-content>
 
             <md-card-actions style="margin-bottom: 10px;">
-                <md-button v-if="currentPage === 0" @click="setupMFA()">
+                <md-button v-if="currentPage === 0" @click="">
                     充值
                 </md-button>
+                <md-button v-if="currentPage === 0" @click="currentPage = 3">
+                    兑换
+                </md-button>
                 <md-button v-if="currentPage !== 0" @click="currentPage = 0">返回</md-button>
-                <md-button v-if="currentPage === 1" @click="verifyCode()">提交</md-button>
-                <md-button v-if="currentPage === 2" @click="submitDisableMFA()">提交</md-button>
+                <md-button v-if="currentPage === 1" @click="">提交</md-button>
+                <md-button v-if="currentPage === 2" @click="">提交</md-button>
+                <md-button v-if="currentPage === 3" @click="useCoupon()">提交</md-button>
             </md-card-actions>
         </md-card>
     </md-layout>
@@ -54,7 +65,8 @@
                 currentPage: 0,
                 userCode: '',
                 mfaCode: '',
-                hasError: false
+                hasError: false,
+                code: ''
             }
         },
         methods: {
@@ -64,6 +76,9 @@
                 window.setTimeout(() => {
                     self.hasError = true
                 }, 1)
+            },
+            useCoupon () {
+                this.$store.dispatch('useCoupon', this.code)
             }
         },
         computed: {
@@ -83,7 +98,6 @@
         background-color: #5983fd;
         color: #FFF;
         text-align: center !important;
-
     }
 
     .uccard-content {
@@ -99,6 +113,11 @@
     .uccard {
         margin: 20px 10px;
         flex: 1;
+    }
+
+    .couponWindow {
+        margin: 7% auto auto auto;
+        width: 240px;
     }
 
     .fade-enter-active, .fade-leave-active {

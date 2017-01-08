@@ -40,6 +40,37 @@ export default [
         component: require('components/Video')
     },
     {
+        path: '/i_courses',
+        name: 'user_courses',
+        component: require('pages/UserCourse/UserCourses')
+    },
+    {
+        path: '/creator_studio',
+        name: 'creator_studio',
+        component: require('pages/Teacher/CreatorStudio'),
+        children: [
+            {
+                name: 'data_center',
+                path: 'data_center',
+                component: require('components/CreatorStudio/DataCenter')
+            },
+            {
+                name: 'my_course',
+                path: 'my_course',
+                component: require('components/CreatorStudio/MyCourse')
+            },
+            {
+                name: 'edit_course',
+                path: 'edit_course/:id',
+                component: require('components/CreatorStudio/EditCourse')
+            },
+            {
+                path: '/*',
+                redirect: 'data_center'
+            }
+        ]
+    },
+    {
         path: '/*',
         redirect: '/'
     }

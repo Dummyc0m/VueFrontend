@@ -1,21 +1,84 @@
 <template>
     <md-whiteframe md-elevation="2" class="section-card">
         <div class="section-title">
-            <h1>{{sectionContent.sectionName}}</h1>
+            <h1 v-if="!titleEditing" @click="titleEditing = edit">{{sectionContent.sectionName}}</h1>
+            <form v-else @submit.prevent="titleEditing = false">
+                <md-input-container>
+                    <form>
+                        <label>编辑标题</label>
+                        <md-input v-model="sectionContent.sectionName"></md-input>
+                    </form>
+                </md-input-container>
+                <md-button type="submit">完成</md-button>
+            </form>
         </div>
         <div class="section-description">
-            <p class="text">{{sectionContent.sectionDescription}}</p>
+            <p class="text" v-if="!descriptionEditing" @click="descriptionEditing = edit">{{sectionContent.sectionDescription}}</p>
+            <form v-else @submit.prevent="descriptionEditing = false">
+                <md-input-container>
+                    <form>
+                        <label>编辑介绍</label>
+                        <md-textarea v-model="sectionContent.sectionDescription"></md-textarea>
+                    </form>
+                </md-input-container>
+                <md-button type="submit">完成</md-button>
+            </form>
         </div>
         <md-list>
-            <CourseSectionListItem v-for="item in sectionContent.sectionContent" :title="item.contentName"
-                                   :active="item.active"></CourseSectionListItem>
+            <CourseSectionListItem v-for="(item, index) in sectionContent.sectionContent" :title="item.contentName"
+                                   :active="item.active" @click.native="editItem(index)" v-if="itemEdit < 0 || !edit"></CourseSectionListItem>
         </md-list>
+        <div v-if="itemEdit >= 0">
+            <form  @submit.prevent="submitItemEdit">
+                <md-input-container>
+                    <label>编辑课程标题</label>
+                    <md-textarea v-model="sectionContent.sectionContent[itemEdit].contentName"></md-textarea>
+                </md-input-container>
+                <md-input-container :class="{'md-input-invalid': !posValid}">
+                    <label>编辑课程顺序</label>
+                    <md-textarea type="number" v-model="itemCurrent"></md-textarea>
+                    <span class="md-error">错误的顺序</span>
+                </md-input-container>
+                <md-button type="submit" :disabled="!posValid">完成</md-button>
+            </form>
+        </div>
     </md-whiteframe>
 </template>
 
 <script>
     import CourseSectionListItem from './CourseSectionListItem.vue'
     export default {
+        data () {
+            return {
+                titleEditing: false,
+                descriptionEditing: false,
+                itemEdit: -1,
+                itemCurrent: 0
+            }
+        },
+        methods: {
+            editItem: function (index) {
+                if (this.edit) {
+                    this.itemEdit = index
+                    this.itemCurrent = index + 1
+                }
+            },
+            submitItemEdit: function () {
+                let itemReal = this.itemCurrent - 1
+                if (itemReal !== this.itemEdit) {
+                    let a = this.sectionContent.sectionContent[this.itemEdit]
+                    this.sectionContent.sectionContent[this.itemEdit] = this.sectionContent.sectionContent[itemReal]
+                    this.sectionContent.sectionContent[itemReal] = a
+                }
+                this.itemCurrent = 0
+                this.itemEdit = -1
+            }
+        },
+        computed: {
+            posValid () {
+                return this.itemCurrent > 0 && this.itemCurrent <= this.sectionContent.sectionContent.length
+            }
+        },
         props: {
             'md-elevation': {
                 type: Number,
@@ -44,6 +107,10 @@
                         ]
                     }
                 }
+            },
+            edit: {
+                type: Boolean,
+                default: false
             }
         },
         components: {
