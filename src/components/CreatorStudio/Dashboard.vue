@@ -7,25 +7,28 @@
                     <div class="md-title">统计数据</div>
                 </md-card-header>
                 <md-card-content>
-                    <md-tabs class="md-transparent" @change="changeDataTab" md-fixed>
-                        <md-tab md-label="日"></md-tab>
-                        <md-tab md-label="周"></md-tab>
-                        <md-tab md-label="月"></md-tab>
-                        <md-tab md-label="年"></md-tab>
-                    </md-tabs>
-
-                    <md-table>
-                        <md-table-body>
-                            <md-table-row>
-                                <md-table-cell>播放次数</md-table-cell>
-                                <md-table-cell md-numeric>{{data[dataTab].view}}</md-table-cell>
-                            </md-table-row>
-                            <md-table-row>
-                                <md-table-cell>不知道什么玩意</md-table-cell>
-                                <md-table-cell md-numeric>{{data[dataTab].revenue}}</md-table-cell>
-                            </md-table-row>
-                        </md-table-body>
-                    </md-table>
+                    <div>
+                        <md-tabs class="md-transparent" @change="changeDataTab" md-fixed>
+                            <md-tab md-label="日"></md-tab>
+                            <md-tab md-label="周"></md-tab>
+                            <md-tab md-label="月"></md-tab>
+                            <md-tab md-label="年"></md-tab>
+                        </md-tabs>
+                    </div>
+                    <div>
+                        <md-table>
+                            <md-table-body>
+                                <md-table-row>
+                                    <md-table-cell>播放次数</md-table-cell>
+                                    <md-table-cell md-numeric>{{data[dataTab].view}}</md-table-cell>
+                                </md-table-row>
+                                <md-table-row>
+                                    <md-table-cell>不知道什么玩意</md-table-cell>
+                                    <md-table-cell md-numeric>{{data[dataTab].revenue}}</md-table-cell>
+                                </md-table-row>
+                            </md-table-body>
+                        </md-table>
+                    </div>
                 </md-card-content>
             </md-card>
         </md-layout>
@@ -76,7 +79,7 @@
 
 <script>
     export default {
-        name: 'DataCenter',
+        name: 'Dashboard',
         data () {
             return {
                 dataTab: 0,
@@ -110,10 +113,12 @@
     .sect {
         flex: 1;
     }
+
     .dataBlock {
         max-height: 300px;
         margin-bottom: 24px;
     }
+
     .feedbackBlock {
         max-height: 480px;
     }

@@ -7,7 +7,7 @@
                     <md-list>
                         <md-subheader>教师中心</md-subheader>
 
-                        <md-list-item :class="{'active':activeItem === 'data_center'}" @click="routerPush('data_center'); activeItem = 'data_center'">
+                        <md-list-item :class="{'active':activeItem === 'dashboard'}" @click="routerPush('dashboard'); activeItem = 'data_center'">
                             <md-icon><i class="fa fa-bar-chart"></i></md-icon>
                             <span>信息中心</span>
                         </md-list-item>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-    import DataCenter from '../../components/CreatorStudio/DataCenter'
+    import DataCenter from '../../components/CreatorStudio/Dashboard'
     import MyCourse from '../../components/CreatorStudio/MyCourse'
     export default {
         data () {
