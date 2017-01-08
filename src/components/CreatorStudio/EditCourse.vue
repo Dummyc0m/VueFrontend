@@ -5,6 +5,7 @@
 </template>
 
 <script>
+    import CourseSection from '../Course/Section/CourseSection'
     export default {
         name: 'EditCourse',
         data () {
@@ -16,7 +17,7 @@
 
         },
         components: {
-
+            CourseSection
         },
         created () {
             this.id = this.$route.params.id

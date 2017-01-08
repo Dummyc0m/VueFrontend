@@ -3,7 +3,8 @@
         <h1 class="md-display-2">我的课程</h1>
         <md-layout md-gutter>
             <CourseCard v-for="course in courses"
-                        :id="course.id" :title="course.name"
+                        :id="course.id"
+                        :title="course.name"
                         :description="course.subject"
                         :pic="course.pic"></CourseCard>
             <AddCard></AddCard>
