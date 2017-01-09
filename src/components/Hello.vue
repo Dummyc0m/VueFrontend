@@ -3,7 +3,7 @@
         <CourseCard id="-1"></CourseCard>
         <TreeMenu></TreeMenu>
         <CourseSection :edit="true"></CourseSection>
-        <vue-html5-editor contents="" @saved="save"></vue-html5-editor>
+        <vue-html5-editor v-model="cont"></vue-html5-editor>
     </div>
 </template>
 
@@ -15,7 +15,7 @@
         name: 'TestPage',
         data () {
             return {
-
+                cont: '大雾霾'
             }
         },
         components: {
@@ -24,9 +24,7 @@
             CourseSection
         },
         methods: {
-            save (content) {
-                console.log(content)
-            }
+
         }
     }
 </script>
