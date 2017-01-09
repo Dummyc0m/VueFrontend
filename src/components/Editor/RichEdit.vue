@@ -6,7 +6,7 @@
                 <EditorMenuItem name="code" icon="fa-code" tip="Test" :active="test" @click="test = !test"></EditorMenuItem>
             </MenuGroup>
         </MenuBar>
-        <div contenteditable="true" style="min-height: 10em; outline: 0 solid transparent;"></div>
+        <div contenteditable="true" class="editing-box"></div>
     </div>
 </template>
 
@@ -36,5 +36,11 @@
         width: 100%;
         border-radius: 2px;
     }
-
+    .editing-box {
+        min-height: 10em;
+        outline: 0 solid transparent;
+        padding: 0.5em 1em;
+        font-family: "Microsoft YaHei", "Helvetica Neue", sans-serif;
+        font-size: medium;
+    }
 </style>
