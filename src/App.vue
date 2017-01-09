@@ -3,7 +3,7 @@
         <header>
             <md-toolbar>
                 <router-link tag="md-button" class="md-icon-button" :to="{name: 'index'}">
-                    <md-icon class="fa fa-graduation-cap fa-2x"></md-icon>
+                    <md-icon>fa-graduation-cap fa-2x</md-icon>
                 </router-link>
 
                 <h2 class="md-title"><router-link :to="{name: 'index'}" class="" style="color: inherit; text-decoration: none;">Classroom</router-link></h2>

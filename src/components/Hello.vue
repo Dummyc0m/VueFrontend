@@ -1,17 +1,11 @@
 <template>
-    <div class="container">
-        <QuestionCard></QuestionCard>
-        <CourseCard :id="-1"></CourseCard>
-        <TreeMenu></TreeMenu>
-        <CourseSection :edit="true"></CourseSection>
+    <div class="container" style="margin-top: 100px">
+        <RichEdit></RichEdit>
     </div>
 </template>
 
 <script>
-    import QuestionCard from 'components/Quiz/QuestionCard'
-    import CourseCard from 'components/Course/CourseCard'
-    import TreeMenu from 'components/TreeMenu/TreeMenu'
-    import CourseSection from 'components/Course/Section/CourseSection'
+    import RichEdit from 'components/Editor/RichEdit'
     export default {
         name: 'TestPage',
         data () {
@@ -20,10 +14,7 @@
             }
         },
         components: {
-            CourseCard,
-            TreeMenu,
-            CourseSection,
-            QuestionCard
+            RichEdit
         }
     }
 </script>
