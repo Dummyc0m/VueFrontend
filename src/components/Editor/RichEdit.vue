@@ -3,7 +3,7 @@
         <MenuBar>
             <MenuGroup>
                 <EditorMenuItem name="code" icon="fa-code" tip="Test"></EditorMenuItem>
-                <EditorMenuItem name="code" icon="fa-code" tip="Test"></EditorMenuItem>
+                <EditorMenuItem name="code" icon="fa-code" tip="Test" :active="test" @click="test = !test"></EditorMenuItem>
             </MenuGroup>
         </MenuBar>
     </div>
@@ -15,6 +15,11 @@
     import EditorMenuItem from './components/menu/EditorMenuItem'
     export default {
         name: 'RichTextEditor',
+        data () {
+            return {
+                test: false
+            }
+        },
         components: {
             MenuBar, MenuGroup, EditorMenuItem
         }
