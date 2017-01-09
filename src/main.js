@@ -7,6 +7,7 @@ import App from './App'
 import VueMaterial from 'vue-material-gc'
 import VideoPlayer from 'vue-video-player'
 import LazyRender from 'vue-lazy-render'
+import editor from 'vue-html5-editor-gc'
 import 'vue-material-gc/dist/vue-material.css'
 import 'font-awesome/css/font-awesome.css'
 import routes from './routes'
@@ -19,6 +20,7 @@ Vue.use(VueHead)
 Vue.use(VueMaterial)
 Vue.use(VideoPlayer)
 Vue.use(LazyRender)
+Vue.use(editor)
 
 Vue.material.registerTheme('default', {
     primary: 'brown',

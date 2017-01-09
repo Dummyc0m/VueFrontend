@@ -1,19 +1,13 @@
 <template>
     <md-layout md-gutter>
-        <md-layout md-column>
-            <md-toolbar class="md-transparent">
-                <h2 class="md-title" style="flex: 1">视频</h2>
-                <md-button class="md-raised">上传</md-button>
-                <md-button class="md-raised"><i class="fa fa-caret-left"></i></md-button>
-                <md-button class="md-raised"><i class="fa fa-caret-right"></i></md-button>
-            </md-toolbar>
-        </md-layout>
+        <TestSectionCard></TestSectionCard>
     </md-layout>
 </template>
 
 <script>
+    import TestSectionCard from './cards/TestSectionCard'
     export default {
-        name: 'MyVideo',
+        name: 'EditTest',
         data () {
             return {
                 id: ''
@@ -23,10 +17,10 @@
 
         },
         components: {
-
+            TestSectionCard
         },
         created () {
-
+            this.id = this.$route.params.id
         }
     }
 </script>

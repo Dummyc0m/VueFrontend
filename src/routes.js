@@ -70,6 +70,11 @@ export default [
                 component: require('components/CreatorStudio/MyVideo')
             },
             {
+                name: 'edit_test',
+                path: 'edit_test/:id',
+                component: require('components/CreatorStudio/EditTest')
+            },
+            {
                 path: '/*',
                 redirect: 'data_center'
             }

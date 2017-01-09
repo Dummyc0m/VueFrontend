@@ -3,6 +3,7 @@
         <CourseCard id="-1"></CourseCard>
         <TreeMenu></TreeMenu>
         <CourseSection :edit="true"></CourseSection>
+        <vue-html5-editor contents="" @saved="save"></vue-html5-editor>
     </div>
 </template>
 
@@ -14,13 +15,18 @@
         name: 'TestPage',
         data () {
             return {
-                content: 'Test'
+
             }
         },
         components: {
             CourseCard,
             TreeMenu,
             CourseSection
+        },
+        methods: {
+            save (content) {
+                console.log(content)
+            }
         }
     }
 </script>
