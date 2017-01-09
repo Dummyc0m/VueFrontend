@@ -6,6 +6,7 @@
                 <EditorMenuItem name="code" icon="fa-code" tip="Test" :active="test" @click="test = !test"></EditorMenuItem>
             </MenuGroup>
         </MenuBar>
+        <div contenteditable="true" style="min-height: 10em; outline: 0 solid transparent;"></div>
     </div>
 </template>
 
@@ -33,6 +34,7 @@
         border: 1px solid #ccc;
         z-index: 1;
         width: 100%;
+        border-radius: 2px;
     }
 
 </style>
