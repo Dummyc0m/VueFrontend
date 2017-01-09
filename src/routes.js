@@ -50,9 +50,9 @@ export default [
         component: require('pages/Teacher/CreatorStudio'),
         children: [
             {
-                name: 'data_center',
-                path: 'data_center',
-                component: require('components/CreatorStudio/DataCenter')
+                name: 'dashboard',
+                path: 'dashboard',
+                component: require('components/CreatorStudio/Dashboard')
             },
             {
                 name: 'my_course',
@@ -76,7 +76,7 @@ export default [
             },
             {
                 path: '/*',
-                redirect: 'data_center'
+                redirect: 'dashboard'
             }
         ]
     },

@@ -78,7 +78,7 @@
 
 <script>
     export default {
-        name: 'DataCenter',
+        name: 'Dashboard',
         data () {
             return {
                 dataTab: 0,
@@ -112,10 +112,12 @@
     .sect {
         flex: 1;
     }
+
     .dataBlock {
         max-height: 300px;
         margin-bottom: 24px;
     }
+
     .feedbackBlock {
         max-height: 480px;
     }

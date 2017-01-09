@@ -29,6 +29,20 @@ export class AuthAPI {
         })
     }
 
+    fetchPermission () {
+        return new Promise((resolve, reject) => {
+            Vue.http.get('auth/permission').then((response) => {
+                response.json().then((json) => {
+                    resolve(json)
+                }, (failed) => {
+                    reject(failed)
+                })
+            }, (response) => {
+                reject(response)
+            })
+        })
+    }
+
     requestMFA () {
         return new Promise((resolve, reject) => {
             Vue.http.get('auth/mfa/getToken').then((response) => {

@@ -11,7 +11,8 @@ const state = {
     username: '',
     authenticated: false,
     mfaAuthed: false,
-    error: false
+    error: false,
+    permissions: []
 }
 
 const mutations = {
@@ -38,6 +39,9 @@ const mutations = {
     },
     [types.AUTHENTICATION_MFA_PASS] (state) {
         state.mfaAuthed = true
+    },
+    [types.AUTHENTICATION_PERMISSIONS_CHANGE] (state, {permissions}) {
+        state.permissions = permissions
     }
 }
 
@@ -59,16 +63,22 @@ const actions = {
             callback(false)
         })
     },
-    verifyToken: ({state, commit, dispatch}, test = {simple: false}) => {
+    fetchPermission: ({commit}) => {
+        api.auth.fetchPermission().then((data) => {
+            commit(types.AUTHENTICATION_PERMISSIONS_CHANGE, data)
+        })
+    },
+    verifyToken: ({state, commit, dispatch}, extra = {simple: false}) => {
         api.auth.verify().then((success) => {
             if (success.isMfaAuthed) {
-                if (test.simple !== null && test.simple !== true) {
+                if (extra.simple !== null && (!extra.simple)) {
                     if (!state.mfaAuthed) {
                         commit(types.AUTHENTICATION_MFA_PASS)
                     }
                     commit(types.AUTHENTICATION_VERIFICATION_SUCCESS)
                     dispatch('updateUserInfo', success.userinfo)
                 }
+                dispatch('fetchPermission')
             } else {
                 commit(types.AUTHENTICATION_REQUIRE_MFA)
             }

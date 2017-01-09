@@ -10,6 +10,7 @@ import LazyRender from 'vue-lazy-render'
 import editor from 'vue-html5-editor-gc'
 import 'vue-material-gc/dist/vue-material.css'
 import 'font-awesome/css/font-awesome.css'
+import 'katex/dist/katex.css'
 import routes from './routes'
 import storeParams from './vuex/store'
 
@@ -27,11 +28,6 @@ Vue.material.registerTheme('default', {
     accent: 'blue',
     warn: 'red',
     background: 'grey'
-})
-VideoPlayer.config({
-    youtube: false,  // default false（youtube的支持）
-    switcher: true, // default true（播放源切换功能）
-    hls: false       // default true（直播功能的支持）
 })
 
 const router = new VueRouter({
