@@ -8,13 +8,15 @@
             <multiple-selection-content v-model="selections" :choices="choices"></multiple-selection-content>
         </QuestionCard>
         {{selections}}
-        <QuestionCard :section="section" :number="number" content="1234年<latex>\int \left(x^2+ax-3\right)^2dx</latex>">
+        <QuestionCard :section="section" :number="number" :content="textContent">
             <text-content v-model="textContent"></text-content>
         </QuestionCard>
         {{textContent}}
         <!--<CourseCard :id="-1"></CourseCard>-->
         <TreeMenu></TreeMenu>
         <CourseSection :edit="true"></CourseSection>
+    <div class="container" style="margin-top: 100px">
+        <RichEdit></RichEdit>
     </div>
 </template>
 
@@ -23,10 +25,11 @@
     import CourseCard from 'components/Course/CourseCard'
     import TreeMenu from 'components/TreeMenu/TreeMenu'
     import CourseSection from 'components/Course/Section/CourseSection'
-//    import MultipleSelectionQuestionCard from 'components/Questions/MultipleSelectionQuestionCard'
     import MultipleChoiceContent from 'components/Quiz/QuestionCardContent/MultipleChoiceContent'
     import MultipleSelectionContent from 'components/Quiz/QuestionCardContent/MultipleSelectionContent'
     import TextContent from 'components/Quiz/QuestionCardContent/TextContent'
+    import RichEdit from 'components/Editor/RichEdit'
+    import AssignmentList from 'components/Assignment/AssignmentList'
 
     export default {
         name: 'TestPage',
@@ -50,7 +53,7 @@
                     value: ', I ejaculated'
                 }],
                 selections: [],
-                textContent: ''
+                textContent: '1234年<latex>\\int \\left(x^2+ax-3\\right)^2dx</latex>'
             }
         },
         components: {
@@ -60,7 +63,9 @@
             QuestionCard,
             MultipleChoiceContent,
             MultipleSelectionContent,
-            TextContent
+            TextContent,
+            RichEdit,
+            AssignmentList
         }
     }
 </script>
