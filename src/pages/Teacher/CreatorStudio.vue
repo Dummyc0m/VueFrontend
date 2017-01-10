@@ -15,7 +15,7 @@
 
             <md-layout md-flex-xsmall="50" md-flex-small="50" md-flex-medium="33" md-flex-large="25"
                        md-flex-xlarge="25">
-                <md-card class="sect md-whiteframe-7dp" style="min-height: 600px">
+                <md-card class="sect md-whiteframe-7dp" style="height: 600px">
                     <md-list>
                         <md-subheader>教师中心</md-subheader>
 
@@ -46,8 +46,6 @@
 </template>
 
 <script>
-    import DataCenter from '../../components/CreatorStudio/Dashboard'
-    import MyCourse from '../../components/CreatorStudio/MyCourse'
     export default {
         data () {
             return {
