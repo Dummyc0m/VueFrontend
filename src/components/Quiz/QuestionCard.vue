@@ -6,7 +6,7 @@
             <h2 class="question-id question-number">{{ number }}</h2>
         </div>
         <div class="question-content">
-            <better-latex>{{ content }}</better-latex>
+            <better-latex :html="content"></better-latex>
         </div>
         <slot>
             This question does not have a format

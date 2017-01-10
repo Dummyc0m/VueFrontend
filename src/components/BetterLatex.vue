@@ -10,9 +10,15 @@
 
     export default {
         name: 'BetterLatex',
+        props: {
+            html: {
+                type: String,
+                required: true
+            }
+        },
         computed: {
             content () {
-                let slotHtml = this.$slots.default[0].text
+                let slotHtml = this.html
                 let regex = /<latex>(.*)<\/latex>/g
                 let match = regex.exec(slotHtml)
                 while (match) {
