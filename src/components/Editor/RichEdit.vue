@@ -2,8 +2,7 @@
     <div class="editor-container">
         <MenuBar>
             <MenuGroup>
-                <EditorMenuItem name="code" icon="fa-code" tip="Test"></EditorMenuItem>
-                <EditorMenuItem name="code" icon="fa-code" tip="Test" :active="test" @click="test = !test"></EditorMenuItem>
+                <1  `EditorMenuItem name="code" icon="fa-code" tip="Test" :active="test" @click="test = !test"></1EditorMenuItem>
             </MenuGroup>
         </MenuBar>
         <div contenteditable="true" class="editing-box"></div>
